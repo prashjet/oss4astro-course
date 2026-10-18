@@ -45,3 +45,14 @@
   flex: 1;
   min-width: 0;
 }
+
+.reveal .slides section img {
+  /* No default max-width exists for a plain <img> (only for images that
+     are *direct* children of r-hstack/r-vstack) - our source images are
+     native-resolution photos/screenshots/charts, often 1000px+ wide,
+     nested one level inside an r-hstack column <div>. Without this,
+     they render at full pixel size regardless of their container and
+     spill straight through whatever is next to them. */
+  max-width: 100%;
+  height: auto;
+}
