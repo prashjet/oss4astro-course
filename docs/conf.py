@@ -17,8 +17,13 @@ revealjs_style_theme = "white"
 revealjs_static_path = ["_static"]
 revealjs_css_files = ["revealjs-custom.css"]
 revealjs_script_conf = {
-    # top-align content instead of vertically centering it, so any
-    # overflow (see revealjs-custom.css) extends predictably downward
-    # into the scroll area rather than clipping above the fold too.
+    # true 16:9 instead of reveal.js's 960x700 default - matches modern
+    # displays/projectors and removes letterboxing that was shrinking
+    # the usable horizontal area.
+    "width": 1280,
+    "height": 720,
+    # top-align content instead of vertically centering it, so a slide
+    # with more content grows downward predictably rather than being
+    # centered (and thus clipped equally top and bottom).
     "center": False,
 }

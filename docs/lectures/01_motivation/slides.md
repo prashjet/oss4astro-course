@@ -40,6 +40,9 @@ What are the benefits of OSS?
 
 ## OSS in astronomy
 
+<div class="r-hstack">
+<div>
+
 - [Astropy](https://www.astropy.org/)
   - A basic library for all astronomy/astrophysics
   - plus ~100 affiliated packages with specific scopes e.g.
@@ -52,9 +55,15 @@ What are the benefits of OSS?
   - dedicated sections in most astronomy white papers
   - credit for research software developers
 
+</div>
+<div>
+
 ![Astropy logo](figs/astropy_logo.jpeg)
 ![Yearly citations to Astropy](figs/astropy_citations.jpeg)
 ![Monthly additions to ASCL](figs/ascl_monthly_additions.jpeg)
+
+</div>
+</div>
 
 
 ## Who am I?
@@ -98,24 +107,36 @@ Demonstrated using [popkinmocks](https://github.com/prashjet/popkinmocks), annot
 - Timetable: subject to change, any changes will be announced
 - 25/01: final project presentations
 
-| Date  | Topic                                                  |
-|-------|---------------------------------------------------------|
-| 05/10 | Intro                                                    |
-| 12/10 | Discuss Project Ideas                                    |
-| 19/10 | Version control & collaboration — *git/GitHub*           |
-| 26/10 | *(hack session)*                                         |
-| 02/11 | *(hack session)*                                         |
-| 09/11 | Environment & dependency management — *uv*               |
-| 16/11 | Documentation — *sphinx*                                 |
-| 23/11 | Testing — *pytest*                                       |
-| 30/11 | Code quality — *ruff, typing*                            |
-| 07/12 | Continuous integration — *GitHub Actions*                 |
-| 14/12 | Packaging: project structure & namespacing                |
-| 21/12 | *(hack session)*                                         |
-| 28/12 | *(hack session)*                                         |
-| 04/01 | Publishing & citing a release                             |
-| 11/01 | Community building                                        |
-| 25/01 | Final Presentations                                       |
+<div class="r-hstack">
+<div>
+
+| Date  | Topic                                        |
+|-------|-----------------------------------------------|
+| 05/10 | Intro                                          |
+| 12/10 | Discuss Project Ideas                          |
+| 19/10 | Version control & collaboration — *git/GitHub* |
+| 26/10 | *(hack session)*                               |
+| 02/11 | *(hack session)*                               |
+| 09/11 | Environment & dependency management — *uv*     |
+| 16/11 | Documentation — *sphinx*                       |
+| 23/11 | Testing — *pytest*                             |
+
+</div>
+<div>
+
+| Date  | Topic                                       |
+|-------|------------------------------------------------|
+| 30/11 | Code quality — *ruff, typing*                   |
+| 07/12 | Continuous integration — *GitHub Actions*       |
+| 14/12 | Packaging: project structure & namespacing      |
+| 21/12 | *(hack session)*                                |
+| 28/12 | *(hack session)*                                |
+| 04/01 | Publishing & citing a release                   |
+| 11/01 | Community building                              |
+| 25/01 | Final Presentations                             |
+
+</div>
+</div>
 
 
 ## Assessment

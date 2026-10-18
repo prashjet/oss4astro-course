@@ -2,16 +2,46 @@
 
 .reveal {
   /* The theme default (42px) is tuned for sparse slides; our decks are
-     bullet-heavy, so a smaller base leaves real headroom before anything
-     needs to scroll. */
+     bullet-heavy, so a smaller base leaves real headroom on content-heavy
+     slides without needing per-slide tuning. */
   --r-main-font-size: 26px;
 }
 
-.reveal .slides section {
-  /* Reveal.js does not scroll overflowing content by default - it is
-     silently clipped by the outer viewport. If a slide is still too
-     tall even at the reduced font size, this guarantees it scrolls
-     instead of losing content invisibly. */
-  overflow-y: auto;
-  max-height: 100%;
+.reveal .slides section ul,
+.reveal .slides section ol {
+  /* The theme makes lists shrink-wrap to their own content width via
+     display:inline-block, then centers that narrow box (.slides has
+     text-align:center) - that's the "squashed into the center" look.
+     Make lists real full-width, left-aligned blocks instead, so bullet
+     content actually uses the available horizontal space. Headings
+     stay centered (the theme default), matching normal slide
+     convention: center only titles. */
+  display: block;
+  width: 100%;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+/* Side-by-side layout helper, for figures/tables placed beside text.
+   Reveal.js already ships r-hstack/r-vstack (flex row/column) - this
+   just widens their default auto-width children to share the row
+   evenly, which is what a 2-up text+figure layout usually wants. Use
+   from markdown via raw HTML, e.g.:
+
+     <div class="r-hstack">
+     <div>
+
+     - bullet content
+
+     </div>
+     <div>
+
+     ![alt](figs/image.jpeg)
+
+     </div>
+     </div>
+*/
+.reveal .r-hstack > div {
+  flex: 1;
+  min-width: 0;
 }
