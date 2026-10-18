@@ -11,6 +11,10 @@ source_suffix = {
     ".md": "markdown",
 }
 
+myst_enable_extensions = [
+    "attrs_inline",  # lets markdown images/links take a {.class} suffix
+]
+
 exclude_patterns = ["_build"]
 
 revealjs_style_theme = "white"

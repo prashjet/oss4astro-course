@@ -83,3 +83,22 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.reveal .slides section {
+  /* Fallback for slides whose content is too tall to fit even after
+     trimming/restructuring: scroll that one slide's content internally
+     rather than silently clipping it past the bottom edge. Use
+     sparingly - a slide you have to scroll is a sign it should
+     probably be split or trimmed, not a substitute for doing that. */
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.reveal .r-hstack img.big-image {
+  /* A single image alone in a column doesn't need the shared 280px cap
+     (that's sized for two charts stacked together) - give it more of
+     the column's actual headroom. Opt in per image via
+     ![alt](path){.big-image} (needs myst_enable_extensions =
+     ["attrs_inline"] in conf.py). */
+  max-height: 480px;
+}
