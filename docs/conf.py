@@ -4,7 +4,7 @@ project = "Open Source Software Development for Astronomy"
 
 extensions = [
     "myst_parser",  # markdown support
-    # slide-rendering extension (sphinx-revealjs vs hieroglyph) TBD
+    "sphinx_revealjs",  # build slides.md as reveal.js decks via `-b revealjs`
 ]
 
 source_suffix = {
@@ -12,3 +12,5 @@ source_suffix = {
 }
 
 exclude_patterns = ["_build"]
+
+revealjs_style_theme = "white"

@@ -26,6 +26,8 @@ jobs:
           python-version: "3.12"
       - run: pip install -r requirements-docs.txt
       - run: sphinx-build -b html docs docs/_build/html
+      - run: sphinx-build -b revealjs docs docs/_build/revealjs
+      - run: cp -r docs/_build/revealjs docs/_build/html/present
       - uses: actions/upload-pages-artifact@v3
         with:
           path: docs/_build/html

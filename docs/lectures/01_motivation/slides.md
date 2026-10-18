@@ -10,7 +10,6 @@ before Testing / Code quality (was: Testing, Code quality, Documentation).
 Prashin Jethwa
 05/10/26
 
----
 
 ## Introduction round
 
@@ -18,13 +17,11 @@ Prashin Jethwa
 2. Study level (PhD/MSc), research area
 3. What's your experience with research code/software development?
 
----
 
 ## What is Open Source Software (OSS)?
 
-## What are the benefits of OSS?
+What are the benefits of OSS?
 
----
 
 ## What is OSS? Why is it useful?
 
@@ -40,7 +37,6 @@ Prashin Jethwa
   - teach you **principles and tools** of open source software
   - enable you to develop an open-source package from the ground up
 
----
 
 ## OSS in astronomy
 
@@ -60,7 +56,6 @@ Prashin Jethwa
 ![Yearly citations to Astropy](figs/astropy_citations.jpeg)
 ![Monthly additions to ASCL](figs/ascl_monthly_additions.jpeg)
 
----
 
 ## Who am I?
 
@@ -79,7 +74,6 @@ Prashin Jethwa
   - Referee for Journal of Open Source Software
   - Built a network of colleagues with a focus on research software
 
----
 
 ## Anatomy of an Open Source Software (OSS) project
 
@@ -94,7 +88,6 @@ Demonstrated using [popkinmocks](https://github.com/prashjet/popkinmocks), annot
 ![popkinmocks repository](figs/popkinmocks_repo.jpeg)
 ![popkinmocks README badges](figs/popkinmocks_readme_badges.jpeg)
 
----
 
 ## This course
 
@@ -124,7 +117,6 @@ Demonstrated using [popkinmocks](https://github.com/prashjet/popkinmocks), annot
 | 11/01 | Community building                                        |
 | 25/01 | Final Presentations                                       |
 
----
 
 ## Assessment
 
@@ -141,7 +133,6 @@ Demonstrated using [popkinmocks](https://github.com/prashjet/popkinmocks), annot
     - Describe the motivation, challenges or difficulties you encountered
     - Answer questions about the package and tools you used
 
----
 
 ## Your software project: what to pick?
 
@@ -159,7 +150,6 @@ Demonstrated using [popkinmocks](https://github.com/prashjet/popkinmocks), annot
     Some hands-on time in lectures, but mostly outside
 - Assessment will be based on OSS criteria, not the content of the package
 
----
 
 ## AI Coding Agents
 
@@ -176,7 +166,6 @@ Demonstrated using [popkinmocks](https://github.com/prashjet/popkinmocks), annot
     - final submission, you must describe your AI usage
   - You are not required to use them; they are not necessary
 
----
 
 ## Logistics
 
@@ -193,7 +182,6 @@ Demonstrated using [popkinmocks](https://github.com/prashjet/popkinmocks), annot
     - share and describe your choices in the class
     - justify your choices for the final project submission
 
----
 
 ## Preparatory tasks before next week
 
