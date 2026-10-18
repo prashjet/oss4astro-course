@@ -70,3 +70,16 @@
   max-width: 100%;
   height: auto;
 }
+
+.reveal .r-hstack img {
+  /* Two or more images stacked in one column (e.g. two charts) can each
+     individually fit max-width:100% and still collectively overflow the
+     slide's height. Cap each one's height too, shrinking by whichever
+     of width/height is more restrictive while keeping its aspect ratio -
+     and center it, since a height-capped image is often narrower than
+     its column. */
+  max-height: 280px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}

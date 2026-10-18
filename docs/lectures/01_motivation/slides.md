@@ -53,7 +53,8 @@ What are the benefits of OSS?
 </div>
 <div>
 
-![Yearly citations to Astropy](figs/astropy_citations.jpeg)
+![Yearly citations to Astropy](figs/astropy_citations_annotated.png)
+![Monthly additions to ASCL](figs/ascl_monthly_additions.png)
 
 </div>
 </div>
@@ -89,25 +90,9 @@ What are the benefits of OSS?
 
 ## Anatomy of an Open Source Software (OSS) project
 
-<div class="r-hstack">
-<div>
-
 Demonstrated using [popkinmocks](https://github.com/prashjet/popkinmocks), annotated with:
 
-- Continuous Integration
-- git/GitHub
-- Documentation
-- Tests
-- Packaging
-
-</div>
-<div>
-
-![popkinmocks repository](figs/popkinmocks_repo.jpeg)
-![popkinmocks README badges](figs/popkinmocks_readme_badges.jpeg)
-
-</div>
-</div>
+![popkinmocks repository, annotated](figs/popkinmocks_annotated.png)
 
 
 ## This course
@@ -124,42 +109,42 @@ Demonstrated using [popkinmocks](https://github.com/prashjet/popkinmocks), annot
 <div class="r-hstack">
 <div>
 
-| Date  | Topic                        |
-|-------|-------------------------------|
-| 05/10 | Intro                          |
-| 12/10 | Discuss Project Ideas          |
-| 19/10 | Version control — *git/GitHub* |
-| 26/10 | *(hack session)*               |
+| Date  | Topic                         |
+|-------|---------------------------------|
+| 05/10 | Intro                           |
+| 12/10 | Discuss Project Ideas           |
+| 19/10 | Version control<br>*git/GitHub* |
+| 26/10 | *(hack session)*                |
+
+</div>
+<div>
+
+| Date  | Topic                      |
+|-------|------------------------------|
+| 02/11 | *(hack session)*             |
+| 09/11 | Environment & deps<br>*uv*   |
+| 16/11 | Documentation<br>*sphinx*    |
+| 23/11 | Testing<br>*pytest*          |
+
+</div>
+<div>
+
+| Date  | Topic                                 |
+|-------|------------------------------------------|
+| 30/11 | Code quality<br>*ruff, typing*           |
+| 07/12 | Continuous integration<br>*GitHub Actions* |
+| 14/12 | Packaging<br>*structure & namespacing*   |
+| 21/12 | *(hack session)*                         |
 
 </div>
 <div>
 
 | Date  | Topic                          |
-|-------|----------------------------------|
-| 02/11 | *(hack session)*                 |
-| 09/11 | Environment & deps — *uv*         |
-| 16/11 | Documentation — *sphinx*          |
-| 23/11 | Testing — *pytest*                |
-
-</div>
-<div>
-
-| Date  | Topic                            |
-|-------|------------------------------------|
-| 30/11 | Code quality — *ruff, typing*       |
-| 07/12 | Continuous integration — *Actions*  |
-| 14/12 | Packaging: structure & namespacing  |
-| 21/12 | *(hack session)*                    |
-
-</div>
-<div>
-
-| Date  | Topic                           |
-|-------|------------------------------------|
-| 28/12 | *(hack session)*                   |
-| 04/01 | Publishing & citing a release      |
-| 11/01 | Community building                 |
-| 25/01 | Final Presentations                |
+|-------|-----------------------------------|
+| 28/12 | *(hack session)*                  |
+| 04/01 | Publishing & citing a release     |
+| 11/01 | Community building                |
+| 25/01 | Final Presentations               |
 
 </div>
 </div>
