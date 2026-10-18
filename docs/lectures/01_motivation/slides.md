@@ -45,28 +45,24 @@ What are the benefits of OSS?
 
 - [Astropy](https://www.astropy.org/)
   - A basic library for all astronomy/astrophysics
-  - plus ~100 affiliated packages with specific scopes e.g.
-    - photutils for photometry
-    - specutils for spectroscopy
+  - plus ~100 affiliated packages with specific scopes e.g. photutils (photometry), specutils (spectroscopy)
 - [Astronomy Source Code Library](https://ascl.net/)
-  - online registry and repository for source codes of interest to astronomers and astrophysicists
-  - ~25 new additions per month
-- Growing recognition of the importance of software & OSS:
-  - dedicated sections in most astronomy white papers
-  - credit for research software developers
+  - online registry and repository for source codes of interest to astronomers and astrophysicists; ~25 new additions per month
+- Growing recognition of the importance of software & OSS: dedicated sections in most astronomy white papers, credit for research software developers
 
 </div>
 <div>
 
-![Astropy logo](figs/astropy_logo.jpeg)
 ![Yearly citations to Astropy](figs/astropy_citations.jpeg)
-![Monthly additions to ASCL](figs/ascl_monthly_additions.jpeg)
 
 </div>
 </div>
 
 
 ## Who am I?
+
+<div class="r-hstack">
+<div>
 
 - Research:
   - Dark matter & galaxy assembly
@@ -76,6 +72,10 @@ What are the benefits of OSS?
   - [DYNAMITE](https://github.com/dynamics-of-stellar-systems/dynamite): orbit-based modelling of galaxies
   - [Popkinmocks](https://github.com/prashjet/popkinmocks): mock IFU datacubes for stellar population and kinematics models of galaxies
   - [TNT](https://github.com/dynamics-of-stellar-systems/tnt): re-writing DYNAMITE using JAX i.e. a differentiable & GPU-accelerated framework (ongoing)
+
+</div>
+<div>
+
 - Other software activities:
   - Contributions to other open-source software projects:
     - [blackjax](https://blackjax-devs.github.io/blackjax/), [numpyro](https://num.pyro.ai/en/stable/) (probabilistic programming languages)
@@ -83,8 +83,14 @@ What are the benefits of OSS?
   - Referee for Journal of Open Source Software
   - Built a network of colleagues with a focus on research software
 
+</div>
+</div>
+
 
 ## Anatomy of an Open Source Software (OSS) project
+
+<div class="r-hstack">
+<div>
 
 Demonstrated using [popkinmocks](https://github.com/prashjet/popkinmocks), annotated with:
 
@@ -94,8 +100,14 @@ Demonstrated using [popkinmocks](https://github.com/prashjet/popkinmocks), annot
 - Tests
 - Packaging
 
+</div>
+<div>
+
 ![popkinmocks repository](figs/popkinmocks_repo.jpeg)
 ![popkinmocks README badges](figs/popkinmocks_readme_badges.jpeg)
+
+</div>
+</div>
 
 
 ## This course
@@ -107,33 +119,47 @@ Demonstrated using [popkinmocks](https://github.com/prashjet/popkinmocks), annot
 - Timetable: subject to change, any changes will be announced
 - 25/01: final project presentations
 
+## Schedule
+
 <div class="r-hstack">
 <div>
 
-| Date  | Topic                                        |
-|-------|-----------------------------------------------|
-| 05/10 | Intro                                          |
-| 12/10 | Discuss Project Ideas                          |
-| 19/10 | Version control & collaboration — *git/GitHub* |
-| 26/10 | *(hack session)*                               |
-| 02/11 | *(hack session)*                               |
-| 09/11 | Environment & dependency management — *uv*     |
-| 16/11 | Documentation — *sphinx*                       |
-| 23/11 | Testing — *pytest*                             |
+| Date  | Topic                        |
+|-------|-------------------------------|
+| 05/10 | Intro                          |
+| 12/10 | Discuss Project Ideas          |
+| 19/10 | Version control — *git/GitHub* |
+| 26/10 | *(hack session)*               |
 
 </div>
 <div>
 
-| Date  | Topic                                       |
-|-------|------------------------------------------------|
-| 30/11 | Code quality — *ruff, typing*                   |
-| 07/12 | Continuous integration — *GitHub Actions*       |
-| 14/12 | Packaging: project structure & namespacing      |
-| 21/12 | *(hack session)*                                |
-| 28/12 | *(hack session)*                                |
-| 04/01 | Publishing & citing a release                   |
-| 11/01 | Community building                              |
-| 25/01 | Final Presentations                             |
+| Date  | Topic                          |
+|-------|----------------------------------|
+| 02/11 | *(hack session)*                 |
+| 09/11 | Environment & deps — *uv*         |
+| 16/11 | Documentation — *sphinx*          |
+| 23/11 | Testing — *pytest*                |
+
+</div>
+<div>
+
+| Date  | Topic                            |
+|-------|------------------------------------|
+| 30/11 | Code quality — *ruff, typing*       |
+| 07/12 | Continuous integration — *Actions*  |
+| 14/12 | Packaging: structure & namespacing  |
+| 21/12 | *(hack session)*                    |
+
+</div>
+<div>
+
+| Date  | Topic                           |
+|-------|------------------------------------|
+| 28/12 | *(hack session)*                   |
+| 04/01 | Publishing & citing a release      |
+| 11/01 | Community building                 |
+| 25/01 | Final Presentations                |
 
 </div>
 </div>
@@ -193,7 +219,7 @@ Demonstrated using [popkinmocks](https://github.com/prashjet/popkinmocks), annot
 - Course [Moodle page](https://moodle.univie.ac.at/course/view.php?id=473822)
   - Resources and slides added as we go along
 - Lecture attendance
-  - > 50% attendance requirement, as recorded by sign-in sheet
+  - at least 50% attendance requirement, as recorded by sign-in sheet
   - to provide flexibility - if you know a lecture topic well, no obligation to turn up
   - no lectures on 26th Oct, 2nd Nov
 - Bring laptops to lectures

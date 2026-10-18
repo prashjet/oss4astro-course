@@ -20,6 +20,11 @@
   width: 100%;
   text-align: left;
   box-sizing: border-box;
+  /* The theme's inline-block version carried a 1em left margin (for
+     centering); left over here it pushes the list 1em past its own
+     100%-width box, bleeding into whatever sits to its right (e.g. an
+     r-hstack sibling column). */
+  margin: 0 0 1em 0;
 }
 
 /* Side-by-side layout helper, for figures/tables placed beside text.
@@ -41,6 +46,15 @@
      </div>
      </div>
 */
+.reveal .r-hstack {
+  /* Reveal.js's default (center) vertically centers each column based on
+     its own height, so columns of different content-heights end up with
+     their headers/first lines staggered at different vertical positions
+     instead of lined up. Top-align instead - what every multi-column
+     text/table/figure layout actually wants. */
+  align-items: flex-start;
+}
+
 .reveal .r-hstack > div {
   flex: 1;
   min-width: 0;
