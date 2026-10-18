@@ -1,0 +1,17 @@
+/* Global overrides applied to every lecture's deck - see docs/conf.py. */
+
+.reveal {
+  /* The theme default (42px) is tuned for sparse slides; our decks are
+     bullet-heavy, so a smaller base leaves real headroom before anything
+     needs to scroll. */
+  --r-main-font-size: 26px;
+}
+
+.reveal .slides section {
+  /* Reveal.js does not scroll overflowing content by default - it is
+     silently clipped by the outer viewport. If a slide is still too
+     tall even at the reduced font size, this guarantees it scrolls
+     instead of losing content invisibly. */
+  overflow-y: auto;
+  max-height: 100%;
+}
