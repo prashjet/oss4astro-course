@@ -3,9 +3,10 @@
 This repository contains resources for the course Open Source Software Development for Astronomy, held during:
 - [winter semester 2026](https://ufind.univie.ac.at/en/course.html?lv=450102&semester=2026W),
 - [winter semester 2023](https://ufind.univie.ac.at/en/course.html?lv=450102&semester=2023W)
+
 at the University of Vienna.
 
-The aim of this course (inspired by the Code/Astro workshops) is to enable MSc/PhD students in astronomy to develop open source software packages for research.
+The aim of this course (inspired by the [Code/Astro](https://semaphorep.github.io/codeastro/) workshops) is to enable MSc/PhD students in astronomy to develop open source software packages for research.
 
 ## Lecture notes 
 
