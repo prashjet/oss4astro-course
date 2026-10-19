@@ -4,12 +4,12 @@ Demonstration walkthrough for the lecture [Git & GitHub](https://prashjet.github
 
 ## Setup
 
-Sign in to GitHub and create a new repository:
+Sign in to GitHub and create a new repository. A few choices matter here, and you'll make them again for your own projects:
 
-- Visibility: public
-- No template
-- Add a README
-- `.gitignore`: Python
+- **Visibility: public** — anyone can view, clone, and fork a public repo. Open-source work needs to be visible, so this is the default for most of what you'll do in this course. (Private repos restrict access to you and whoever you explicitly invite — the right call for anything not meant to be shared.)
+- **No template** — templates pre-fill a repo with an existing project's structure. We're starting from nothing, so every piece of git appears as it happens, not hidden inside a scaffold someone else wrote.
+- **Add a README** — this gives the repo an actual first commit on `main`, rather than a genuinely empty one. It's also just good practice: a README is the first thing anyone sees when they land on your project, and it's where you explain what it does.
+- **`.gitignore`: Python** — a `.gitignore` tells git which files to never track: caches, build artifacts, virtual environments, anything generated rather than written by hand. GitHub's Python template pre-fills the usual suspects (`__pycache__`, `.venv`, ...) — worth having even though this particular demo repo barely touches Python.
 
 Clone it to your machine to create your local repository:
 
