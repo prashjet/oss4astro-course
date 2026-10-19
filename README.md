@@ -8,10 +8,20 @@ The aim of this course (inspired by the [Code/Astro](https://semaphorep.github.i
 
 ## Lecture notes 
 
-| Lecture | Slides | Demo Notes |
-|---|---|---|
-| Motivation | [link](https://prashjet.github.io/oss4astro-course/present/lectures/01_motivation/slides.html) | |
-| Intro to Git | [link](https://prashjet.github.io/oss4astro-course/present/lectures/02_intro_to_git/slides.html) | [link](https://prashjet.github.io/oss4astro-course/lectures/02_intro_to_git/walkthrough.html) |
+| Date | Lecture | Slides | Demo Notes |
+|---|---|---|---|
+| 05/10 | Motivation | [link](https://prashjet.github.io/oss4astro-course/present/lectures/01_motivation/slides.html) | n/a |
+| 12/10 | Discuss Project Ideas | n/a | n/a |
+| 19/10 | Version control and collaboration | [link](https://prashjet.github.io/oss4astro-course/present/lectures/02_intro_to_git/slides.html) | [link](https://prashjet.github.io/oss4astro-course/lectures/02_intro_to_git/walkthrough.html) |
+| 09/11 | Environment and dependency management | ... | ... |
+| 16/11 | Documentation | ... | ... |
+| 23/11 | Testing | ... | ... |
+| 30/11 | Code quality: linting, formatting, and type hints | ... | ... |
+| 07/12 | Continuous integration | ... | ... |
+| 14/12 | Packaging: project structure and namespacing | ... | ... |
+| 04/01 | Publishing and citing a release | ... | ... |
+| 11/01 | Community building: contribution guidelines, codes of conduct, and welcoming new contributors | ... | ... |
+
 
 ## Student Software Packages
 
