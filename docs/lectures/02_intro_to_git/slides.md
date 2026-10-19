@@ -123,3 +123,7 @@ Instructions to reproduce can be found [here](https://prashjet.github.io/oss4ast
   - raise an issue in your repository describing some change you would like to make (keep it simple!)
   - invite a colleague from this class to address the issue,
   - to do this: fork your partner's repo, make the change, raise a PR
+
+## Activity
+
+Follow the instructions on [first-contributions](https://github.com/firstcontributions/first-contributions) to make your first contribution to an open source project.
