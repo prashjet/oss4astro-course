@@ -17,6 +17,12 @@ The aim of this course (inspired by the [Code/Astro](https://semaphorep.github.i
 
 A list of student software packages completed during this course:
 
+### 2026
+
+| Student                   | Repository    |
+| --------                  | -------       |
+| ...                       | ...           |
+
 ### 2023
 
 | Student                   | Repository                   |
@@ -34,3 +40,10 @@ A list of student software packages completed during this course:
 | Alena Rottensteiner       | [IsoModulator](https://github.com/rottenstea/Empirical_isochrones)   |
 | Cameren Swiggum           | [dash_gaia_orbits](https://github.com/CSwigg/dash_gaia_orbits)   |
 | Josef Thomas Tucek        | [QUEQSolver](https://github.com/josef223/QUEQSolver)   |
+
+## Repository Structure
+
+Resources for each lecture are in `docs/lectures/`. Each lecture has:
+- slides,
+- a walkthrough with detailed instructions on the demo plus some additional resources, 
+- a stripped-back script listing commands used in the demo
