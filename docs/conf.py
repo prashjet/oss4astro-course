@@ -17,6 +17,8 @@ myst_enable_extensions = [
 
 exclude_patterns = ["_build"]
 
+html_theme = "furo"
+
 revealjs_style_theme = "white"
 revealjs_static_path = ["_static"]
 revealjs_css_files = ["revealjs-custom.css"]
