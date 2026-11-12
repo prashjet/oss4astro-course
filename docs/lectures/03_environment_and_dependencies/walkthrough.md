@@ -299,21 +299,7 @@ Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then run:
 ```
 
 Users can install the package with pip; developers can recreate the locked
-environment with uv. Review and commit on the demo branch:
-
-```sh
-git status
-git diff
-git add -A
-git diff --cached
-git commit -m "Initialize installable sequence library"
-```
-
-Optionally share the branch and open a pull request:
-
-```sh
-git push -u origin lecture-03-library
-```
+environment with uv.
 
 ## Additional uv features (for reference)
 
