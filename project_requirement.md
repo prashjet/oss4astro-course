@@ -43,3 +43,14 @@ We recommend using [`uv`](https://docs.astral.sh/uv/) for dependency and environ
 Equivalent tools and workflows are acceptable, provided they satisfy the requirements above.
 
 **Verification:** Another student should be able to clone your repository, install your package in a fresh Python environment, and import and use its functionality by following your README.
+
+## Documentation
+
+- **README:** Explain what the package does, how to install it, and how to get a first result. Include a quick-start example with expected output, alongside the development environment instructions above.
+- **Docstrings:** Document public functions and classes using a consistent style. Explain inputs, outputs, units, and relevant assumptions or restrictions. Include defaults and exceptions where useful.
+- **Documentation site:** Provide a usage guide and API reference, and publish the site online. Publishing will be covered in the later lectures on continuous integration and publishing a release; for now, build and inspect the site locally.
+- **Worked example:** Include a complete example with the imports, accessible data if needed, expected output, and an explanation of the result.
+
+Keep documentation sources and their dependencies in the repository; generated HTML can be rebuilt from them. Sphinx is the demonstrated tool, but equivalent tools are welcome.
+
+**Verification:** Another student should be able to complete a small task using only your documentation, without needing you to explain missing steps.
