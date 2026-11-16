@@ -152,9 +152,24 @@ Now insert this Google-style docstring immediately after the
 
 `Args` records defaults and the restriction on `n`. `Raises` describes the actual
 checks: non-`int` input and booleans cause `TypeError`; negative integers cause
-`ValueError`. The function does not validate `start` or `ratio`; the descriptions
+`ValueError`. The descriptions
 show the intended numeric inputs. Integer arguments can produce integer terms,
 so `Returns` deliberately describes a list without promising float elements.
+
+Otehr sections are possible, but there's no need to fill out every possible field A full list of sections allowed in Google style docstrings are below, but only include sections that help the reader.
+
+| Section | Purpose |
+|---|---|
+| `Args:` | Describe parameters, their types, defaults, and restrictions. |
+| `Returns:` | Describe the returned value, including its type, shape, and units where relevant. |
+| `Raises:` | List exceptions and the conditions that cause them. |
+| `Examples:` | Show how to use the function. |
+| `Notes:` | Explain algorithms, assumptions, or mathematical details. |
+| `Warnings:` | Highlight pitfalls or conditions requiring care. |
+| `References:` | Cite relevant papers or other sources. |
+| `See Also:` | Point to related functions or classes. |
+| `Attributes:` | Describe a class’s public attributes. |
+| `Yields:` | Describe values produced by a generator, instead of `Returns:`. |
 
 Inspect the documentation and try both examples:
 

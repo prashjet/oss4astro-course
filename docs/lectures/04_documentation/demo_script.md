@@ -9,13 +9,15 @@ orphan: true
 - Start from `sequence` commit `0d838a5` (lecture 3 library + README); use a working feature branch.
 - All commands below run at the **sequence repository root**.
 - Follow [walkthrough](walkthrough.md); all seven steps below match it.
-- Existing checkout: use feature branch; fresh demo setup:
+- Existing checkout: use feature branch; fresh demo setup
 
 ```sh
 git clone https://github.com/prashjet/sequence.git
 cd sequence
 git switch -c lecture-04-documentation 0d838a5
 ```
+
+- set VSCode autoDocstring docstring format to numpy so we later change it to Google
 
 ## 1. Recap lecture 3
 
@@ -50,6 +52,8 @@ uv run python
 - Recommend **Google style** for this course; keep one style throughout a project.
 - Inspect actual `even(n)`: `2.*np.arange(n)`. Keep NumPy import and `hello()`.
 - Replace only `even` in `src/sequence/__init__.py`:
+
+- demo autocomplete of docstrings: initial default is numpy so we later change it to Google
 
 ```python
 def even(n):
@@ -124,9 +128,7 @@ def geometric(n, start=1.0, ratio=2.0):
     """
 ```
 
-```sh
-uv run python
-```
+In an interactive python session,
 
 ```pycon
 >>> from sequence import geometric
@@ -141,6 +143,9 @@ uv run python
 - Args: defaults/restrictions; Returns: list; Raises: actual checks; Examples: two sequences.
 - `start`/`ratio`: numeric intended inputs, no validation.
 - `geometric(4, start=1, ratio=2)` → `[1, 2, 4, 8]`; don't promise floats.
+- the examples are not exectued - see `doctest` next week
+
+- commit the docstrings!
 
 ## 3. Basic Sphinx site
 
@@ -154,7 +159,14 @@ uv run sphinx-quickstart docs
 - Sphinx: text sources → HTML (default). No separate source directory.
 - `conf.py`: metadata, empty extensions, `_build` excluded, Alabaster theme.
 - `index.rst`: landing page, reStructuredText; Makefile/make.bat: optional build helpers.
-- Keep the generated configuration for now. Replace generated `docs/index.rst` with:
+
+- build the template docs
+
+```sh
+uv run sphinx-build docs docs/_build/html
+```
+
+- Now replace generated `docs/index.rst` with:
 
 ```rst
 sequence
@@ -227,16 +239,6 @@ API reference
 .. autofunction:: sequence.geometric
 ```
 
-- Alternative: replace individual directives with all documented public members:
-
-```rst
-.. automodule:: sequence
-   :members:
-```
-
-- Don't combine: duplicate entries. `:undoc-members:` also lists undocumented functions.
-
-
 - Append to `docs/index.rst`:
 
 ```rst
@@ -249,6 +251,15 @@ API reference
 - Rebuild: `even` inputs/return; `geometric` defaults, exceptions, examples.
 - Edit docstring; rebuild, refresh → API updates.
 - Installed package supplies imports: no `sys.path` workaround.
+
+- Alternative: replace individual directives with all documented public members:
+
+```rst
+.. automodule:: sequence
+   :members:
+```
+
+- Don't combine: duplicate entries. `:undoc-members:` also lists undocumented functions.
 
 ## 6. Executable Markdown: MyST-NB
 
@@ -278,7 +289,7 @@ nb_execution_raise_on_error = True
 - `force`: run whenever page is built; execution error → failed build.
 - Create `docs/example.md`; metadata marks notebook/selects kernel:
 
-````markdown
+````
 ---
 file_format: mystnb
 kernelspec:
