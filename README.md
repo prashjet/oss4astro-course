@@ -33,6 +33,7 @@ A list of student software packages completed during this course:
 | Student                   | Repository    |
 | --------                  | -------       |
 | Shaunak Padhyegurjar      | [ToyPM](https://github.com/Shaunak-PG2001/ToyPM)    |
+| Lena Einramhof            | [CROWStacks](https://github.com/lnnrmhf/CROWStacks)    |
 
 ### 2023
 
