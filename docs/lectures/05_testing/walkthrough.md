@@ -8,12 +8,12 @@ This walkthrough follows the live demo using [sequence](https://github.com/prash
 
 ## 1. Set up
 
-Continue from the lecture 4 checkout:
+Let's start from the commit at the end of lecture 4:
 
 ```bash
 git clone https://github.com/prashjet/sequence.git
 cd sequence
-git switch -c lecture-05-testing 0d838a5
+git switch -c lecture-05-testing 48a47b7
 uv sync --locked
 ```
 
@@ -179,21 +179,23 @@ First, install the pytest coverage plugin:
 uv add --dev pytest-cov
 ```
 
-Then run:
+Run:
 
 ```bash
 uv run pytest --doctest-modules src/sequence tests --cov=sequence --cov-report=term-missing
 ```
 
-The report shows the percentage of lines executed in each module, along with any lines that weren't reached.
+The report shows the percentage of executable lines covered by our tests, along with any lines that weren't reached.
 
-We can also measure **branch coverage**, which checks whether different paths through conditional statements have been exercised:
+For a more detailed view, generate an **HTML coverage report**:
 
 ```bash
-uv run pytest --doctest-modules src/sequence tests --cov=sequence --cov-branch --cov-report=term-missing
+uv run pytest --doctest-modules src/sequence tests --cov=sequence --cov-report=html
 ```
 
-Inspect the coverage report. We haven't yet tested what happens when `n` is a negative integer, so the branch that raises `ValueError` should be missing.
+Open `htmlcov/index.html` in your browser. You can inspect individual source files and see which lines were executed and which were missed.
+
+Notice that we haven't tested what happens when `n` is a negative integer. Find the corresponding uncovered line in `fibonacci()`.
 
 Add the missing test to `tests/test_fibonacci.py`:
 
@@ -203,21 +205,23 @@ def test_negative_n_is_rejected():
         fibonacci(-1)
 ```
 
-Run the branch coverage command again:
+Generate the HTML report again. The previously uncovered line should now be marked as covered.
+
+The overall coverage percentage may still be below 100%, because we're measuring the entire `sequence` package, which contains other functions.
+
+### Enforcing a minimum coverage threshold
+
+For your course project, you'll need at least **75% line coverage**. You can check this automatically:
 
 ```bash
-uv run pytest --doctest-modules src/sequence tests --cov=sequence --cov-branch --cov-report=term-missing
+uv run pytest --cov=sequence --cov-report=term-missing --cov-fail-under=75
 ```
 
-The previously missing negative-input branch should now be covered.
+Replace `sequence` with your own package name. The command fails if the measured coverage is below 75%.
 
-We've exercised both outcomes of the `n < 0` condition in `fibonacci()`. However, the overall coverage percentage applies to the entire measured package, which may contain other functions or modules.
+**But does executing every line mean our function is correct?** Could we introduce a bug that our tests wouldn't detect, without changing the coverage?
 
-Notice also that **line coverage and branch coverage are different measures**. The project's 75% requirement refers specifically to line coverage.
-
-**Does executing every line and branch mean our function is correct?** Could we introduce a bug that our tests wouldn't detect, without changing the coverage?
-
-We'll return to this question in the slides.
+We'll return to that question in the slides.
 
 ## 6. Property-based testing with Hypothesis
 
@@ -225,9 +229,9 @@ So far, we've tested specific inputs and expected outputs. But some functions al
 
 For Fibonacci, each number after the first two is the sum of its predecessors:
 
-\[
+```{math}
 F_n = F_{n-1} + F_{n-2}, \qquad n \geq 2
-\]
+```
 
 Rather than choosing a few values of `n` ourselves, we can use **Hypothesis** to generate inputs and check this relationship.
 
@@ -323,9 +327,9 @@ Property-based testing complements, rather than replaces, tests with specific kn
 | `pytest.raises(...)` | Check that invalid inputs raise the expected exception. |
 | `uv run pytest --doctest-modules` | Also test `>>>` examples in Python docstrings. |
 | `uv add --dev pytest-cov` | Add the coverage plugin for pytest. |
-| `--cov=sequence --cov-report=term-missing` | Measure line coverage and identify untested lines. |
-| `--cov-branch` | Also measure branch coverage. |
-| `--cov-fail-under=75` | Fail the test run if total coverage is below 75%. |
+| `--cov=sequence --cov-report=term-missing` | Measure line coverage and list unexecuted lines. |
+| `--cov-report=html` | Generate an HTML report showing covered and missed lines. |
+| `--cov-fail-under=75` | Fail the test run if coverage is below 75%. |
 | `uv add --dev hypothesis` | Add Hypothesis for property-based testing. |
 | `@given(...)` and `st.integers(...)` | Describe allowed inputs and test a property using generated examples. |
 

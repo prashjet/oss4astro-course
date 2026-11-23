@@ -69,13 +69,13 @@ We will add a Fibonacci sequence to our `sequence` package, test it, and examine
 
 ## What does coverage tell us?
 
-Coverage asks: **which lines or branches ran?**
+Coverage measures which lines of code were executed during our tests.
 
-It does not ask whether an assertion was meaningful, whether all inputs were tried, or whether the science is right.
+It doesn't tell us whether the assertions were meaningful, whether we've tested all relevant inputs, or whether the results are correct.
 
-A test can execute every line and still fail to notice a wrong result.
+A test can execute every line of code without detecting an incorrect result.
 
-Use coverage to identify gaps in your tests, **not as a certificate of correctness**.
+Use coverage to find gaps in your tests, not as a measure of correctness.
 
 ## What makes a good test?
 
@@ -100,20 +100,17 @@ def normalize(x):
     Parameters
     ----------
     x : array-like
-        A one-dimensional sequence of non-negative
-        numbers with a positive sum.
+        A one-dimensional sequence of non-negative numbers with a positive sum.
 
     Returns
     -------
     numpy.ndarray
-        An array of the same length, whose elements
-        sum to one.
+        An array of the same length, whose elements sum to one.
 
     Raises
     ------
     ValueError
-        If the input is empty, contains negative
-        values, or has a sum of zero.
+        If the input is empty, contains negative values, or has a sum of zero.
     """
 ```
 
@@ -132,6 +129,7 @@ Design a set of tests for this function, using only its docstring as a specifica
 - Would checking that the output sums to one be sufficient?
 - What would happen if the function always returned a uniform distribution?
 - How would you choose an appropriate numerical tolerance?
+  - `np.isclose`, `np.allclose`, `np.testing.assert_allclose` — using relative (`rtol`) and absolute (`atol`) tolerances
 - Which tests check particular examples, and which check general properties?
 
 **Is the specification itself sufficiently precise?**
@@ -145,15 +143,6 @@ Instead of choosing every test input ourselves, we can test **general properties
 - Generates inputs satisfying constraints we specify.
 - Explores a range of values, including interesting edge cases.
 - Checks whether a property holds for those inputs.
-
-**How is this different from `pytest.mark.parametrize`?**
-
-- **Parametrization:** We choose the test cases.
-- **Hypothesis:** We describe the allowed inputs, and it generates test cases.
-
-For a simple function with one integer input, the advantage may be modest. **Hypothesis becomes particularly useful when testing functions with multiple inputs, arrays, or complex data structures**, where the number of possible cases quickly becomes enormous.
-
-It complements, rather than replaces, tests with known expected results.
 
 ## Takeaways
 
