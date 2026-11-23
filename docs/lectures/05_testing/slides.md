@@ -100,17 +100,20 @@ def normalize(x):
     Parameters
     ----------
     x : array-like
-        A one-dimensional sequence of non-negative numbers with a positive sum.
+        A one-dimensional sequence of non-negative
+        numbers with a positive sum.
 
     Returns
     -------
     numpy.ndarray
-        An array of the same length, whose elements sum to one.
+        An array of the same length, whose elements
+        sum to one.
 
     Raises
     ------
     ValueError
-        If the input is empty, contains negative values, or has a sum of zero.
+        If the input is empty, contains negative
+        values, or has a sum of zero.
     """
 ```
 

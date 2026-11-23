@@ -22,6 +22,7 @@ We'll install each testing tool as we introduce it.
 Create a `tests/` directory, then install pytest:
 
 ```bash
+mkdir -p tests
 uv add --dev pytest
 ```
 
@@ -262,7 +263,7 @@ Pytest reports one passing test, but Hypothesis has checked the property for man
 
 **Is it just choosing random numbers?**
 
-Not quite. Hypothesis uses generated inputs, including pseudorandom exploration, but also deliberately explores interesting cases such as boundary values. It uses feedback from test execution to guide its search.
+Not quite. Hypothesis uses generated inputs, including pseudorandom exploration, but also deliberately explores interesting cases such as boundary values. It can use feedback from test execution to guide its search.
 
 For our integer strategy, values near the ends of the range, such as `2` and `100`, are among the interesting cases it may explore.
 
