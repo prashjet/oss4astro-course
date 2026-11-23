@@ -54,3 +54,11 @@ Equivalent tools and workflows are acceptable, provided they satisfy the require
 Keep documentation sources and their dependencies in the repository; generated HTML can be rebuilt from them. Sphinx is the demonstrated tool, but equivalent tools are welcome.
 
 **Verification:** Another student should be able to complete a small task using only your documentation, without needing you to explain missing steps.
+
+## Testing
+
+- Write automated tests for your Python code using **pytest**.
+- Achieve **at least 75% line coverage** across your package, measured using `pytest-cov` (or an equivalent coverage tool).
+- In your **final presentation**, present one representative test from your test suite. Explain what behaviour it checks, why you chose it, and what kind of bug it would catch.
+- (*) Include executable examples in your docstrings and test them using `pytest --doctest-modules`.
+- (*) Use **Hypothesis** (or an equivalent tool) for property-based testing.
