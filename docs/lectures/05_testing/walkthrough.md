@@ -17,17 +17,21 @@ git switch -c lecture-05-testing 0d838a5
 uv sync --locked
 ```
 
-Install test tools as development dependencies:
+We'll install each testing tool as we introduce it.
+
+Create a `tests/` directory, then install pytest:
 
 ```bash
-uv add --dev pytest pytest-cov hypothesis
+uv add --dev pytest
 ```
 
-This updates `pyproject.toml`, `uv.lock`, and the local environment. The tools are for development, not requirements for users of the package. Create a `tests/` directory. `uv run` runs each command in the project environment.
+This updates `pyproject.toml`, `uv.lock`, and the local environment. We use `--dev` because pytest is needed to develop and test the package, but not to use it.
+
+`uv run` runs commands in the project's environment.
 
 ## 2. Specify and implement Fibonacci
 
-A function’s contract describes what callers can expect: which inputs it accepts, what it returns, and what errors it raises. For example, to implement the `fibonacci` sequence:
+A function's **contract** describes what callers can expect: which inputs it accepts, what it returns, and what errors it raises.
 
 **Contract:** `fibonacci(n)` returns a Python list containing the first `n` Fibonacci numbers, starting `0, 1`; subsequent terms are the sum of the previous two. `n` must be a non-negative Python `int`; reject `bool` despite it being an `int` subclass. Return `[]` for zero. Raise `TypeError` for other types and `ValueError` for negative integers.
 
@@ -66,7 +70,7 @@ def fibonacci(n):
     return values
 ```
 
-We chose to reject `True` even though `bool` is a subclass of `int`. In the next section, we’ll write a test that makes sure `fibonacci` honours that choice.
+We chose to reject `True` even though `bool` is a subclass of `int`. In the next section, we'll write a test that makes sure `fibonacci` honours that choice.
 
 ## 3. Write and run tests with pytest
 
@@ -88,7 +92,11 @@ Run:
 uv run pytest -v tests/test_fibonacci.py
 ```
 
-Pytest discovers `test_*.py` files and `test_` functions. The report should show one passed test. Temporarily change the expected last value to `8`, rerun and inspect pytest's comparison. Restore `5` and rerun. A failure is useful information: check whether the implementation or the expectation is wrong before changing either.
+Pytest discovers `test_*.py` files and `test_` functions. The report should show one passed test.
+
+Temporarily change the expected last value to `8`, rerun and inspect pytest's comparison. Restore `5` and rerun.
+
+A failure is useful information: check whether the implementation or the expectation is wrong before changing either.
 
 ### Test multiple inputs with parametrization
 
@@ -128,7 +136,7 @@ def test_non_integer_n_is_rejected(n):
         fibonacci(n)
 ```
 
-Here, `pytest.raises` checks the exception type, while `match` checks that its message contains the specified text. The test uses parametrization again, this time with just one parameter, `n`. Pytest runs it separately for each of the four invalid inputs.
+Here, `pytest.raises` checks the exception type, while `match` checks that its message contains the specified text. The test uses parametrization again, this time with just one parameter, `n`.
 
 Notice that `True` is included: Python treats booleans as integers, so we need to explicitly reject them if our function is intended to accept integers but not booleans.
 
@@ -146,19 +154,17 @@ uv run pytest -v --doctest-modules src/sequence
 
 The `--doctest-modules` option tells pytest to look for `>>>` examples in Python docstrings. Each docstring containing examples is collected as a test, and pytest compares the actual output with the expected output.
 
-Try deliberately introducing an error: in the Fibonacci docstring, change the expected final value from `5` to `8`. Run the command again and inspect the failure message. Pytest shows both the expected and actual outputs.
+Try deliberately introducing an error: in the Fibonacci docstring, change the expected final value from `5` to `8`. Run the command again and inspect the failure message.
 
 Restore the correct value and verify that the test passes.
 
-**A limitation:** Doctest compares the displayed output, which can make tests sensitive to formatting and floating-point precision. For more sophisticated numerical tests, use ordinary pytest assertions with `pytest.approx` or NumPy's testing utilities.
+**A limitation:** Doctest compares displayed output, which can make tests sensitive to formatting and floating-point precision. For more sophisticated numerical tests, use ordinary pytest assertions with `pytest.approx` or NumPy's testing utilities.
 
-Finally, we can run our regular tests and docstring examples together:
+Finally, run our regular tests and docstring examples together:
 
 ```bash
 uv run pytest -v --doctest-modules src/sequence tests
 ```
-
-This runs our regular pytest tests alongside the examples in our docstrings.
 
 ## 5. Measure test coverage
 
@@ -186,11 +192,9 @@ We can also measure **branch coverage**, which checks whether different paths th
 uv run pytest --doctest-modules src/sequence tests --cov=sequence --cov-branch --cov-report=term-missing
 ```
 
-Notice that we haven't achieved 100% branch coverage. The report identifies a missing branch in `fibonacci()`. Look at the corresponding line in the implementation: what input would cause the function to take that path?
+Inspect the coverage report. We haven't yet tested what happens when `n` is a negative integer, so the branch that raises `ValueError` should be missing.
 
-We've tested valid inputs and several invalid types, but we haven't checked what happens when `n` is a negative integer.
-
-Add the missing test:
+Add the missing test to `tests/test_fibonacci.py`:
 
 ```python
 def test_negative_n_is_rejected():
@@ -198,9 +202,13 @@ def test_negative_n_is_rejected():
         fibonacci(-1)
 ```
 
-Run the coverage command again. The previously missing branch should now be covered, bringing us to 100% branch coverage for `fibonacci()`. The regular test suite now has nine cases.
+Run the coverage command again.
 
-But does 100% coverage mean our function is correct? Could we introduce a bug that our tests wouldn't detect, without changing the coverage at all?
+The negative-input branch should now be covered. We may have exercised every branch in `fibonacci()`, but the reported coverage percentage applies to the measured package, which may contain other functions or modules.
+
+The regular test suite now has nine cases.
+
+**But does exercising every branch mean our function is correct?** Could we introduce a bug that our tests wouldn't detect, without changing the coverage at all?
 
 We'll return to that question in the slides, where we'll discuss what makes a **good test**, rather than simply a test that executes some code.
 
@@ -216,7 +224,9 @@ The Fibonacci sequence satisfies the **recurrence relation**
 F_n = F_{n-1} + F_{n-2}, \qquad n \geq 2
 \]
 
-In other words, each number is the sum of the previous two. Rather than checking this for a few values of `n` that we choose ourselves, we can ask Hypothesis to generate many values and check the relationship for each one.
+In other words, each number is the sum of the previous two.
+
+Rather than checking this for a few values of `n` that we choose ourselves, we can ask Hypothesis to generate many values and check the relationship for each one.
 
 First, install Hypothesis:
 
@@ -228,6 +238,7 @@ Create a new test file, `tests/test_properties.py`:
 
 ```python
 from hypothesis import given, strategies as st
+
 from sequence import fibonacci
 
 
@@ -237,9 +248,9 @@ def test_fibonacci_recurrence(n):
     assert seq[n] == seq[n - 1] + seq[n - 2]
 ```
 
-The `@given` decorator tells Hypothesis to generate values of `n` between 2 and 100. For each value, we check the recurrence relation.
+The `@given` decorator tells Hypothesis to supply values of `n` to our test. `st.integers(min_value=2, max_value=100)` describes the allowed inputs.
 
-Run the test:
+Run:
 
 ```bash
 uv run pytest -v tests/test_properties.py
@@ -247,7 +258,37 @@ uv run pytest -v tests/test_properties.py
 
 Pytest reports one passing test, but Hypothesis has checked the property for many different values of `n`.
 
-**Let's see what happens when a property fails.**
+### How does Hypothesis choose its inputs?
+
+**Is it just choosing random numbers?**
+
+Not quite. Hypothesis uses generated inputs, including pseudorandom exploration, but also deliberately explores interesting cases such as boundary values. It uses feedback from test execution to guide its search.
+
+For our integer strategy, values near the ends of the range, such as `2` and `100`, are among the interesting cases it may explore.
+
+**What does it do that parametrization doesn't?**
+
+With pytest parametrization, we explicitly provide every case:
+
+```python
+@pytest.mark.parametrize("n", [2, 3, 10, 100])
+def test_fibonacci_recurrence(n):
+    ...
+```
+
+With Hypothesis, we describe the allowed inputs and let the library generate examples:
+
+```python
+@given(st.integers(min_value=2, max_value=100))
+def test_fibonacci_recurrence(n):
+    ...
+```
+
+Hypothesis can explore combinations we might not have thought to include manually. This is especially useful when a function accepts several inputs, arrays, strings or more complicated data structures.
+
+It doesn't guarantee that every possible input is tested, and it doesn't replace carefully chosen examples with known expected results.
+
+### See a failing property
 
 Temporarily change the assertion to:
 
@@ -255,11 +296,17 @@ Temporarily change the assertion to:
 assert seq[n] == seq[n - 1] + seq[n - 2] + 1
 ```
 
-Run the test again. Hypothesis reports a failing example and attempts to find a simpler counterexample. In this case, any valid `n` fails, so it should shrink towards `n=2`.
+Run the test again:
 
-Restore the original assertion and rerun the test.
+```bash
+uv run pytest -v tests/test_properties.py
+```
 
-The important distinction is that **we specify the property, while Hypothesis chooses the test inputs**. This becomes particularly useful when the input space is large or when unexpected combinations of inputs expose bugs that we hadn't anticipated.
+Hypothesis reports a failing input. Since the assertion is now wrong for every valid `n`, the test fails regardless of which value is chosen.
+
+Restore the original assertion and rerun.
+
+**The key distinction:** We specify the property and the allowed inputs; Hypothesis chooses examples to test it.
 
 ## 7. Summary: testing commands and concepts
 
@@ -269,7 +316,7 @@ The important distinction is that **we specify the property, while Hypothesis ch
 | `uv run pytest` | Discover and run tests. |
 | `uv run pytest -v` | Run tests with more detailed output. |
 | `assert` | Check that a result matches an expectation. |
-| `@pytest.mark.parametrize` | Run the same test with several sets of inputs. |
+| `@pytest.mark.parametrize` | Run the same test with several specified inputs. |
 | `pytest.raises(...)` | Check that invalid inputs raise the expected exception. |
 | `uv run pytest --doctest-modules` | Also test `>>>` examples in Python docstrings. |
 | `uv add --dev pytest-cov` | Add the coverage plugin for pytest. |
@@ -277,10 +324,11 @@ The important distinction is that **we specify the property, while Hypothesis ch
 | `--cov-branch` | Also measure branch coverage. |
 | `--cov-fail-under=75` | Fail the test run if total coverage is below 75%. |
 | `uv add --dev hypothesis` | Add Hypothesis for property-based testing. |
-| `@given(...)` and `st.integers(...)` | Generate test inputs and check a property across them. |
+| `@given(...)` and `st.integers(...)` | Describe allowed inputs and test a property using generated examples. |
 
 ### Key ideas
 
 - **Tests** check expected behaviour, including boundary cases and invalid inputs.
 - **Coverage** reveals which code has been exercised, but doesn't establish correctness.
-- **Property-based testing** checks general relationships across generated inputs, complementing tests of specific examples.
+- **Parametrization** runs cases we explicitly choose.
+- **Property-based testing** explores generated inputs, complementing tests of specific examples.
