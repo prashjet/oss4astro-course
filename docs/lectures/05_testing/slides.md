@@ -138,23 +138,21 @@ Design a set of tests for this function, using only its docstring as a specifica
 
 ## Property-based testing
 
-Instead of manually choosing a few inputs, we can test **general properties** across many automatically generated inputs.
+Instead of manually choosing every test input, we can check **general properties** across many automatically generated inputs.
 
 [Hypothesis](https://hypothesis.readthedocs.io/) is a Python library that:
 
-- Generates inputs according to constraints we specify.
-- Explores a mixture of generated values and interesting edge cases.
+- Generates inputs satisfying constraints we specify.
+- Explores both generated values and interesting edge cases.
 - Checks the same property across many inputs.
 
 **How is this different from `pytest.mark.parametrize`?**
 
-With parametrization, **we choose the test cases**. With Hypothesis, **we describe the allowed inputs**, and the library explores them.
+With parametrization, **we choose the test cases**. With Hypothesis, **we describe the allowed inputs**, and the library generates examples.
 
 For our `normalize` function, we might want to test whether multiplying every input by a positive constant leaves the result unchanged.
 
 But first, we'd need to establish that this behaviour is part of the intended specification.
-
-**Back to the terminal:** Let's try Hypothesis with Fibonacci.
 
 ## Takeaways
 

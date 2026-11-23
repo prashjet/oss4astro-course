@@ -4,7 +4,7 @@ orphan: true
 
 # Walkthrough: Testing Python software
 
-This walkthrough follows the live demo using [sequence](https://github.com/prashjet/sequence). Run shell commands from the repository root. Text at a Python prompt (`>>>`) is Python, not a shell command. The goal is to test a specified behaviour, then ask how strong those tests are.
+This walkthrough follows the live demo using [sequence](https://github.com/prashjet/sequence). Run shell commands from the repository root. The goal is to test specified behaviour, then ask how strong those tests are.
 
 ## 1. Set up
 
@@ -19,7 +19,7 @@ uv sync --locked
 
 We'll install each testing tool as we introduce it.
 
-Create a `tests/` directory, then install pytest:
+Create a `tests/` directory and install pytest:
 
 ```bash
 mkdir -p tests
@@ -203,31 +203,33 @@ def test_negative_n_is_rejected():
         fibonacci(-1)
 ```
 
-Run the coverage command again.
+Run the branch coverage command again:
 
-The negative-input branch should now be covered. We may have exercised every branch in `fibonacci()`, but the reported coverage percentage applies to the measured package, which may contain other functions or modules.
+```bash
+uv run pytest --doctest-modules src/sequence tests --cov=sequence --cov-branch --cov-report=term-missing
+```
 
-The regular test suite now has nine cases.
+The previously missing negative-input branch should now be covered.
 
-**But does exercising every branch mean our function is correct?** Could we introduce a bug that our tests wouldn't detect, without changing the coverage at all?
+We've exercised both outcomes of the `n < 0` condition in `fibonacci()`. However, the overall coverage percentage applies to the entire measured package, which may contain other functions or modules.
 
-We'll return to that question in the slides, where we'll discuss what makes a **good test**, rather than simply a test that executes some code.
+Notice also that **line coverage and branch coverage are different measures**. The project's 75% requirement refers specifically to line coverage.
+
+**Does executing every line and branch mean our function is correct?** Could we introduce a bug that our tests wouldn't detect, without changing the coverage?
+
+We'll return to this question in the slides.
 
 ## 6. Property-based testing with Hypothesis
 
-We've seen how tests can check general properties, rather than just particular input-output pairs. **Hypothesis** lets us test those properties across many automatically generated inputs.
+So far, we've tested specific inputs and expected outputs. But some functions also satisfy **general properties** that we can test across many inputs.
 
-Let's use our Fibonacci function to demonstrate.
-
-The Fibonacci sequence satisfies the **recurrence relation**
+For Fibonacci, each number after the first two is the sum of its predecessors:
 
 \[
 F_n = F_{n-1} + F_{n-2}, \qquad n \geq 2
 \]
 
-In other words, each number is the sum of the previous two.
-
-Rather than checking this for a few values of `n` that we choose ourselves, we can ask Hypothesis to generate many values and check the relationship for each one.
+Rather than choosing a few values of `n` ourselves, we can use **Hypothesis** to generate inputs and check this relationship.
 
 First, install Hypothesis:
 
@@ -235,7 +237,7 @@ First, install Hypothesis:
 uv add --dev hypothesis
 ```
 
-Create a new test file, `tests/test_properties.py`:
+Create `tests/test_properties.py`:
 
 ```python
 from hypothesis import given, strategies as st
@@ -249,27 +251,27 @@ def test_fibonacci_recurrence(n):
     assert seq[n] == seq[n - 1] + seq[n - 2]
 ```
 
-The `@given` decorator tells Hypothesis to supply values of `n` to our test. `st.integers(min_value=2, max_value=100)` describes the allowed inputs.
-
-Run:
+Run the test:
 
 ```bash
 uv run pytest -v tests/test_properties.py
 ```
 
-Pytest reports one passing test, but Hypothesis has checked the property for many different values of `n`.
+Pytest reports one passing test, but Hypothesis has checked the property for many generated values of `n`.
 
 ### How does Hypothesis choose its inputs?
 
-**Is it just choosing random numbers?**
+Hypothesis isn't simply choosing uniformly random numbers.
 
-Not quite. Hypothesis uses generated inputs, including pseudorandom exploration, but also deliberately explores interesting cases such as boundary values. It can use feedback from test execution to guide its search.
+It generates inputs within the constraints we specify, using a combination of pseudorandom exploration and deliberately interesting examples, including boundary values.
 
-For our integer strategy, values near the ends of the range, such as `2` and `100`, are among the interesting cases it may explore.
+For our integer strategy, `2` and `100` are examples of boundary values it can explore.
 
-**What does it do that parametrization doesn't?**
+Hypothesis also uses information from previous test executions to guide its search. It doesn't guarantee that every possible input will be tested.
 
-With pytest parametrization, we explicitly provide every case:
+### How is this different from parametrization?
+
+With pytest parametrization, **we explicitly choose the inputs**:
 
 ```python
 @pytest.mark.parametrize("n", [2, 3, 10, 100])
@@ -277,7 +279,7 @@ def test_fibonacci_recurrence(n):
     ...
 ```
 
-With Hypothesis, we describe the allowed inputs and let the library generate examples:
+With Hypothesis, **we describe the allowed inputs**, and it generates examples:
 
 ```python
 @given(st.integers(min_value=2, max_value=100))
@@ -285,9 +287,7 @@ def test_fibonacci_recurrence(n):
     ...
 ```
 
-Hypothesis can explore combinations we might not have thought to include manually. This is especially useful when a function accepts several inputs, arrays, strings or more complicated data structures.
-
-It doesn't guarantee that every possible input is tested, and it doesn't replace carefully chosen examples with known expected results.
+The distinction becomes particularly useful for functions accepting several parameters, arrays, strings, or more complicated data structures, where there may be many possible combinations to explore.
 
 ### See a failing property
 
@@ -303,11 +303,13 @@ Run the test again:
 uv run pytest -v tests/test_properties.py
 ```
 
-Hypothesis reports a failing input. Since the assertion is now wrong for every valid `n`, the test fails regardless of which value is chosen.
+Hypothesis reports a failing example. In this case, the assertion is wrong for every valid input, so any generated value of `n` will reveal the failure.
 
-Restore the original assertion and rerun.
+Restore the original assertion and rerun the test.
 
-**The key distinction:** We specify the property and the allowed inputs; Hypothesis chooses examples to test it.
+**The key idea:** We specify the property and the allowed inputs; Hypothesis explores examples that might violate it.
+
+Property-based testing complements, rather than replaces, tests with specific known results.
 
 ## 7. Summary: testing commands and concepts
 
