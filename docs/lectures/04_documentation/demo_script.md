@@ -6,7 +6,8 @@ orphan: true
 
 ## Before class
 
-- Start from `sequence` commit `0d838a5` (lecture 3 library + README); use a working feature branch.
+- Start from `sequence` commit `0d838a5` (lecture 3 library + README); use a working
+  feature branch.
 - All commands below run at the **sequence repository root**.
 - Follow [walkthrough](walkthrough.md); all seven steps below match it.
 - Existing checkout: use feature branch; fresh demo setup
@@ -21,10 +22,12 @@ git switch -c lecture-04-documentation 0d838a5
 
 ## 1. Recap lecture 3
 
-- Open README, `pyproject.toml`, `.python-version`, `uv.lock`, `src/sequence/__init__.py`.
+- Open README, `pyproject.toml`, `.python-version`, `uv.lock`,
+  `src/sequence/__init__.py`.
 - `src/` library, installed editable; NumPy runtime; **Sphinx already in dev**.
 - Python 3.13; `.venv` disposable; lockfile shared. No docs directory yet.
-- Sphinx missing? `uv add --dev sphinx` first → metadata, lockfile, environment updated; no reinitialization.
+- Sphinx missing? `uv add --dev sphinx` first → metadata, lockfile, environment updated;
+  no reinitialization.
 
 ```sh
 uv sync --locked
@@ -47,13 +50,15 @@ uv run python
 
 ## 2. Styles → docstring → help()
 
-- Open [Napoleon's Google vs NumPy examples](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/index.html#google-vs-numpy).
+- Open
+  [Napoleon's Google vs NumPy examples](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/index.html#google-vs-numpy).
 - Google: `Args:` and indented entries. NumPy: underlined `Parameters` headings.
 - Recommend **Google style** for this course; keep one style throughout a project.
 - Inspect actual `even(n)`: `2.*np.arange(n)`. Keep NumPy import and `hello()`.
 - Replace only `even` in `src/sequence/__init__.py`:
 
-- demo autocomplete of docstrings: initial default is numpy so we later change it to Google
+- demo autocomplete of docstrings: initial default is numpy so we later change it to
+  Google
 
 ```python
 def even(n):
@@ -86,7 +91,8 @@ uv run python
 
 ### Richer example — geometric
 
-- Append to `src/sequence/__init__.py`, alongside `even` and `hello()`; no separate export file:
+- Append to `src/sequence/__init__.py`, alongside `even` and `hello()`; no separate
+  export file:
 
 ```python
 def geometric(n, start=1.0, ratio=2.0):
@@ -100,8 +106,8 @@ def geometric(n, start=1.0, ratio=2.0):
 
 - First term: exponent zero → `start`; each next term × `ratio`; `n=0` → `[]`.
 - Validation: non-Python-int/bool → TypeError; negative int → ValueError.
-- Then insert this docstring immediately after the `def geometric(...)` line;
-  keep the implementation below it:
+- Then insert this docstring immediately after the `def geometric(...)` line; keep the
+  implementation below it:
 
 ```python
     """Return the first n terms of a geometric sequence.
@@ -140,7 +146,8 @@ In an interactive python session,
 >>> exit()
 ```
 
-- Args: defaults/restrictions; Returns: list; Raises: actual checks; Examples: two sequences.
+- Args: defaults/restrictions; Returns: list; Raises: actual checks; Examples: two
+  sequences.
 - `start`/`ratio`: numeric intended inputs, no validation.
 - `geometric(4, start=1, ratio=2)` → `[1, 2, 4, 8]`; don't promise floats.
 - the examples are not exectued - see `doctest` next week
@@ -153,12 +160,13 @@ In an interactive python session,
 uv run sphinx-quickstart docs
 ```
 
-- Prompts: separate source/build directories **n**; project **sequence**;
-  author **Prashin Jethwa**; release **0.1.0**; language **en**.
+- Prompts: separate source/build directories **n**; project **sequence**; author
+  **Prashin Jethwa**; release **0.1.0**; language **en**.
 - Inspect generated `docs/conf.py`, `docs/index.rst`, `docs/Makefile`, `docs/make.bat`.
 - Sphinx: text sources → HTML (default). No separate source directory.
 - `conf.py`: metadata, empty extensions, `_build` excluded, Alabaster theme.
-- `index.rst`: landing page, reStructuredText; Makefile/make.bat: optional build helpers.
+- `index.rst`: landing page, reStructuredText; Makefile/make.bat: optional build
+  helpers.
 
 - build the template docs
 
@@ -199,23 +207,28 @@ The sequence starts at zero; five is the number of values, not the endpoint.
 uv run sphinx-build docs docs/_build/html
 ```
 
-- Sources: `docs/`; generated HTML: `docs/_build/html/`. Ignore `docs/_build/` in `.gitignore`.
-- Open `docs/_build/html/index.html` directly in your browser (e.g. double-click it in the file manager).
+- Sources: `docs/`; generated HTML: `docs/_build/html/`. Ignore `docs/_build/` in
+  `.gitignore`.
+- Open `docs/_build/html/index.html` directly in your browser (e.g. double-click it in
+  the file manager).
 - Rebuild after edits, then refresh the browser.
 
 ## 4. Theme = presentation
 
-- Browse [Sphinx Themes](https://sphinx-themes.org/) for examples; use Furo for this demo.
+- Browse [Sphinx Themes](https://sphinx-themes.org/) for examples; use Furo for this
+  demo.
 
 ```sh
 uv add --dev furo
 ```
 
-- Set `html_theme = "furo"` in `docs/conf.py`; rebuild, refresh. Same content, new presentation.
+- Set `html_theme = "furo"` in `docs/conf.py`; rebuild, refresh. Same content, new
+  presentation.
 
 ## 5. Extensions = functionality
 
-- Built into Sphinx: autodoc imports code; napoleon lets Sphinx interpret our structured Google-style docstrings.
+- Built into Sphinx: autodoc imports code; napoleon lets Sphinx interpret our structured
+  Google-style docstrings.
 - Replace empty extensions list in `docs/conf.py`:
 
 ```python

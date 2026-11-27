@@ -1,64 +1,90 @@
 
 # Project Requirements
 
-A list of requirements your software package will be graded against, to be
-updated as the course progresses.
+A list of requirements your software package will be graded against, to be updated as
+the course progresses.
 
-Any point which is explicitly optional will be marked with a (*). All other
-points are required however you are free to choose alternative tools if you 
-prefer. In that case, I will ask you to briefly explain your choice of tooling.
+Any point which is explicitly optional will be marked with a (*). All other points are
+required however you are free to choose alternative tools if you prefer. In that case, I
+will ask you to briefly explain your choice of tooling.
 
-Two weeks before the project submission, each item in the list will be allocated
-a number of points. For certain points, I will ask you to provide evidence e.g.
-a reference to a relevant pull request. These points will contribute 60% of your
-final grade, with the final 40% coming from the project presentation.
+Two weeks before the project submission, each item in the list will be allocated a
+number of points. For certain points, I will ask you to provide evidence e.g. a
+reference to a relevant pull request. These points will contribute 60% of your final
+grade, with the final 40% coming from the project presentation.
 
 ## git & GitHub
 
 - use Git & GitHub for version control,
 - use PR (pull requests) for every new feature, bug fix etc
   - do not merge directly to main!
-  - keep individual PRs *well-scoped* i.e. as small as possible to implement a single useful modification...
+  - keep individual PRs *well-scoped* i.e. as small as possible to implement a single
+    useful modification...
 - collaborate at least once via GitHub issues & PRs:
   - pick a partner in the class,
-  - raise an issue in your repository describing some change you would like to make (keep it simple!)
+  - raise an issue in your repository describing some change you would like to make
+    (keep it simple!)
   - invite a colleague from this class to address the issue,
   - to do this: fork your partner's repo, make the change, raise a PR
 
 ## Python environments and dependencies
 
-Your project must be structured as an **installable Python package**, with its environment and dependencies managed reproducibly.
+Your project must be structured as an **installable Python package**, with its
+environment and dependencies managed reproducibly.
 
 Requirements:
 
-- **Package structure:** Organize your code as an installable Python package, with appropriate `[build-system]` configuration in `pyproject.toml`.
-- **Installation:** The package must be installable from a fresh clone using `pip install .`, without requiring `uv`.
-- **Dependencies:** Declare runtime dependencies in `pyproject.toml`, distinguishing them from development dependencies (such as testing and documentation tools).
-- **Reproducibility:** Include a lockfile (`uv.lock` or equivalent) in the Git repository.
-- **Environment isolation:** Use an isolated Python environment for development. Do not commit `.venv/` or other generated environments.
-- **Documentation:** Provide README instructions explaining how to install and use the package, and how to recreate the development environment.
+- **Package structure:** Organize your code as an installable Python package, with
+  appropriate `[build-system]` configuration in `pyproject.toml`.
+- **Installation:** The package must be installable from a fresh clone using
+  `pip install .`, without requiring `uv`.
+- **Dependencies:** Declare runtime dependencies in `pyproject.toml`, distinguishing
+  them from development dependencies (such as testing and documentation tools).
+- **Reproducibility:** Include a lockfile (`uv.lock` or equivalent) in the Git
+  repository.
+- **Environment isolation:** Use an isolated Python environment for development. Do not
+  commit `.venv/` or other generated environments.
+- **Documentation:** Provide README instructions explaining how to install and use the
+  package, and how to recreate the development environment.
 
-We recommend using [`uv`](https://docs.astral.sh/uv/) for dependency and environment management. For a new project, `uv init --lib` provides a suitable starting structure.
+We recommend using [`uv`](https://docs.astral.sh/uv/) for dependency and environment
+management. For a new project, `uv init --lib` provides a suitable starting structure.
 
-Equivalent tools and workflows are acceptable, provided they satisfy the requirements above.
+Equivalent tools and workflows are acceptable, provided they satisfy the requirements
+above.
 
-**Verification:** Another student should be able to clone your repository, install your package in a fresh Python environment, and import and use its functionality by following your README.
+**Verification:** Another student should be able to clone your repository, install your
+package in a fresh Python environment, and import and use its functionality by following
+your README.
 
 ## Documentation
 
-- **README:** Explain what the package does, how to install it, and how to get a first result. Include a quick-start example with expected output, alongside the development environment instructions above.
-- **Docstrings:** Document public functions and classes using a consistent style. Explain inputs, outputs, units, and relevant assumptions or restrictions. Include defaults and exceptions where useful.
-- **Documentation site:** Provide a usage guide and API reference, and publish the site online. Publishing will be covered in the later lectures on continuous integration and publishing a release; for now, build and inspect the site locally.
-- **Worked example:** Include a complete example with the imports, accessible data if needed, expected output, and an explanation of the result.
+- **README:** Explain what the package does, how to install it, and how to get a first
+  result. Include a quick-start example with expected output, alongside the development
+  environment instructions above.
+- **Docstrings:** Document public functions and classes using a consistent style.
+  Explain inputs, outputs, units, and relevant assumptions or restrictions. Include
+  defaults and exceptions where useful.
+- **Documentation site:** Provide a usage guide and API reference, and publish the site
+  online. Publishing will be covered in the later lectures on continuous integration and
+  publishing a release; for now, build and inspect the site locally.
+- **Worked example:** Include a complete example with the imports, accessible data if
+  needed, expected output, and an explanation of the result.
 
-Keep documentation sources and their dependencies in the repository; generated HTML can be rebuilt from them. Sphinx is the demonstrated tool, but equivalent tools are welcome.
+Keep documentation sources and their dependencies in the repository; generated HTML can
+be rebuilt from them. Sphinx is the demonstrated tool, but equivalent tools are welcome.
 
-**Verification:** Another student should be able to complete a small task using only your documentation, without needing you to explain missing steps.
+**Verification:** Another student should be able to complete a small task using only
+your documentation, without needing you to explain missing steps.
 
 ## Testing
 
 - Write automated tests for your Python code using **pytest**.
-- Achieve **at least 75% line coverage** across your package, measured using `pytest-cov` (or an equivalent coverage tool).
-- In your **final presentation**, present one representative test from your test suite. Explain what behaviour it checks, why you chose it, and what kind of bug it would catch.
-- (*) Include executable examples in your docstrings and test them using `pytest --doctest-modules`.
+- Achieve **at least 75% line coverage** across your package, measured using
+  `pytest-cov` (or an equivalent coverage tool).
+- In your **final presentation**, present one representative test from your test suite.
+  Explain what behaviour it checks, why you chose it, and what kind of bug it would
+  catch.
+- (*) Include executable examples in your docstrings and test them using
+  `pytest --doctest-modules`.
 - (*) Use **Hypothesis** (or an equivalent tool) for property-based testing.

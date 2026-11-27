@@ -8,7 +8,8 @@ orphan: true
 
 - sign in to GitHub
 - create a new repository:
-    - named `sequence` (not to clash with the real `sequences` example that will be used for the rest of the lecture)
+    - named `sequence` (not to clash with the real `sequences` example that will be used
+      for the rest of the lecture)
     - visibility: public
     - no template
     - add a README
@@ -29,9 +30,9 @@ Now with branches:
   - note: lists all branches, highlights the active one
 - make a change, add, commit
 - git push -u origin new_feature
-  - note: needs `-u` here (unlike the push to main) - cloning only sets up
-    tracking for branches that already existed on the remote; `new_feature`
-    is brand new, so there's nothing to link to until this first push
+  - note: needs `-u` here (unlike the push to main) - cloning only sets up tracking for
+    branches that already existed on the remote; `new_feature` is brand new, so there's
+    nothing to link to until this first push
 - raise and merge the PR in GitHub
 - delete the branch on GitHub once merged
 - git checkout main
@@ -53,7 +54,8 @@ Now with branches:
     - branch 2: change to provoke a conflict, raise PR, resolve in browser via GitHub
 - create two new branches off of main:
     - branch 1: change, commit, PR, merge
-    - branch 2: change to provoke a conflict, raise PR, resolve in VSCode by merging main into the branch
+    - branch 2: change to provoke a conflict, raise PR, resolve in VSCode by merging
+      main into the branch
 
 ## GitHub Fork and PR
 

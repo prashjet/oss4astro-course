@@ -1,10 +1,13 @@
 # Open Source Software Development for Astronomy
 
-This repository contains resources for the course Open Source Software Development for Astronomy, held at the University of Vienna during:
+This repository contains resources for the course Open Source Software Development for
+Astronomy, held at the University of Vienna during:
 - [winter semester 2026](https://ufind.univie.ac.at/en/course.html?lv=450102&semester=2026W),
 - [winter semester 2023](https://ufind.univie.ac.at/en/course.html?lv=450102&semester=2023W)
 
-The aim of this course (inspired by the [Code/Astro](https://semaphorep.github.io/codeastro/) workshops) is to enable MSc/PhD students in astronomy to develop open source software packages for research.
+The aim of this course (inspired by the
+[Code/Astro](https://semaphorep.github.io/codeastro/) workshops) is to enable MSc/PhD
+students in astronomy to develop open source software packages for research.
 
 ## Lecture notes 
 
@@ -56,13 +59,13 @@ A list of student software packages completed during this course:
 
 Resources for each lecture are in `docs/lectures/`. Each lecture has:
 - slides,
-- a walkthrough with detailed instructions on the demo plus some additional resources, 
+- a walkthrough with detailed instructions on the demo plus some additional resources,
 - a stripped-back script listing commands used in the demo
 
 ## Maintaining the course materials
 
-Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then run
-these commands from the repository root:
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then run these
+commands from the repository root:
 
 ```sh
 uv sync --locked
@@ -74,12 +77,12 @@ uv run python -m http.server 8000 --directory docs/_build/html
 ```
 
 Open <http://localhost:8000> for the notes, or
-<http://localhost:8000/present/lectures/02_intro_to_git/slides.html> for a deck.
-Stop the server with Ctrl-C. Before repeating the copy command, remove the
-generated `docs/_build/html/present/` directory to avoid retaining stale files.
+<http://localhost:8000/present/lectures/02_intro_to_git/slides.html> for a deck. Stop
+the server with Ctrl-C. Before repeating the copy command, remove the generated
+`docs/_build/html/present/` directory to avoid retaining stale files.
 
-To add a lecture, fill in its files under `docs/lectures/`, mark the populated
-pages with the YAML front matter shown below, and update the schedule links above.
+To add a lecture, fill in its files under `docs/lectures/`, mark the populated pages
+with the YAML front matter shown below, and update the schedule links above.
 
 ```yaml
 ---
@@ -87,9 +90,9 @@ orphan: true
 ---
 ```
 
-This marks each page as standalone: students reach it through README links,
-without needing a Sphinx toctree entry. Empty Markdown scaffolds are automatically excluded from builds. Keep
-`future_changes.md` as an ignored local planning file.
+This marks each page as standalone: students reach it through README links, without
+needing a Sphinx toctree entry. Empty Markdown scaffolds are automatically excluded from
+builds. Keep `future_changes.md` as an ignored local planning file.
 
-Pull requests check both builds and treat warnings as errors. Merges to `main`
-also publish the notes and decks to GitHub Pages.
+Pull requests check both builds and treat warnings as errors. Merges to `main` also
+publish the notes and decks to GitHub Pages.

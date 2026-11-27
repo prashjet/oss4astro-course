@@ -27,7 +27,8 @@ Documentation should help you answer these questions.
 
 A documentation website brings these pieces together.
 
-Let's look at an example: the [Gala](https://gala.adrian.pw/en/latest/index.html) package for galactic dynamics.
+Let's look at an example: the [Gala](https://gala.adrian.pw/en/latest/index.html)
+package for galactic dynamics.
 
 ## From docstrings to a documentation site
 
@@ -42,7 +43,8 @@ We still decide what it needs to say.
 
 ## Live Demo
 
-Instructions to reproduce can be found [here](https://prashjet.github.io/oss4astro-course/lectures/04_documentation/walkthrough.html).
+Instructions to reproduce can be found
+[here](https://prashjet.github.io/oss4astro-course/lectures/04_documentation/walkthrough.html).
 
 ##  Writing *useful* documentation
 
@@ -56,8 +58,7 @@ But can another astronomer use it?
 
 ## Write for a particular reader
 
-Imagine an astronomer who understands the science,
-but has never used your package.
+Imagine an astronomer who understands the science, but has never used your package.
 
 They don't know:
 
@@ -89,8 +90,7 @@ A useful example includes:
 - expected output,
 - an explanation of what that output means.
 
-Could someone copy your example into a fresh session
-and get the result you describe?
+Could someone copy your example into a fresh session and get the result you describe?
 
 ## Explain the scientific contract
 
@@ -116,8 +116,7 @@ Code can run successfully and still produce a misleading result.
 > Must be a positive odd integer.
 > Larger values suppress noise but can wash out short transits.
 
-Explain what a parameter controls,
-what values are allowed, and why the choice matters.
+Explain what a parameter controls, what values are allowed, and why the choice matters.
 
 ## Explain why as well as how
 
@@ -130,8 +129,7 @@ It leaves questions:
 - When should I change it?
 - What happens if I increase it?
 
-Give enough reasoning for the reader to adapt the example
-to their own data.
+Give enough reasoning for the reader to adapt the example to their own data.
 
 ## Put detail where it helps
 
@@ -141,9 +139,8 @@ An API reference needs precise, easy-to-find details.
 
 A discussion of the method needs assumptions and reasoning.
 
-Link between them:
-the reader should be able to find more detail
-without needing to read everything first.
+Link between them: the reader should be able to find more detail without needing to read
+everything first.
 
 ## Test your documentation with a reader
 
@@ -156,8 +153,7 @@ Watch where they:
 - guess,
 - ask you a question.
 
-Resist explaining immediately.
-The explanation they needed belongs in the documentation.
+Resist explaining immediately. The explanation they needed belongs in the documentation.
 
 ## Exercise: write a docstring
 
@@ -170,14 +166,16 @@ def flux_to_magnitude(flux, zero_point=25.0):
 
 Write a docstring that would help another astronomer use this function.
 
-What can you establish from the code?
-What would you need to ask the author?
+What can you establish from the code? What would you need to ask the author?
 
 ## Project requirements
 
 Your project should include:
 
-- A **README** explaining what the package does, how to install it, and a (optional, if appropriate) quick-start example with expected output
-- **Docstrings** for public functions and classes, covering inputs, outputs, units, and relevant assumptions.
-- A **published documentation site** containing the usage guide and API reference. Details about publishing covered in later lectures.
+- A **README** explaining what the package does, how to install it, and a (optional, if
+  appropriate) quick-start example with expected output
+- **Docstrings** for public functions and classes, covering inputs, outputs, units, and
+  relevant assumptions.
+- A **published documentation site** containing the usage guide and API reference.
+  Details about publishing covered in later lectures.
 - A **worked example** with expected output and an explanation of the result.
