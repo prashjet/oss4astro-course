@@ -244,9 +244,9 @@ Let's add an example usage to `typing_demo.py`
 ```python
 from sequence import fibonacci
 import matplotlib.pyplot as plt
-from sequence.plotter import plot_sequence
+from sequence.analysis import plot_sequence
 
-fig = plot_sequence(even, 10, "forward")
+fig = plot_sequence(fibonacci, 10, "forward")
 plt.show()
 ```
 
@@ -268,7 +268,7 @@ In a type annotation the operator | combines types into their union. For example
 function that returns the last element of a sequence of integers. If the sequence 
 is empty, it should returns `None`. The return annotation will describe both possibilities.
 
-Add the following example to `src/sequences/analysis.py` 
+Add the following example to `src/sequence/analysis.py` 
 
 ```python
 from collections.abc import Sequence
@@ -376,8 +376,8 @@ Now let's use it to add our missing docstrings and type hints.
 
 ## 4. Putting it altogether
 
-We now have a number of checks you should run periodically. Before opening/updating
-every pull request: 1. format your code 2. run the linter, 3. run the type checker, 
+We now have a number of checks you should run before opening/updating
+each pull request: 1. format your code 2. run the linter, 3. run the type checker, 
 4. run the full test suite 5. build the documentation.
 
 ```bash
@@ -388,6 +388,9 @@ uv run pytest --doctest-modules src/sequence tests
 uv run sphinx-build -b html docs docs/_build/html
 ```
 
-If you're using an AI coding agent, you can add this to your AGENTS.md.
+You can bundle these command into a script (e.g. `scripts/check.sh`) which 
+you run before each PR. If you're using an AI coding agent to raise pull 
+requests, you can add this to your AGENTS.md as a sequence of pre pull request checks.
 
-In the next lecture, we’ll automate these checks with continuous integration.
+In the next lecture, we’ll automate these checks on the remote repository with
+continuous integration.

@@ -28,7 +28,7 @@ Let's demo this using the `sequence` package
 
 ````{only} revealjs
 ```{raw} html
-<a href="../../../lectures/06_testing/walkthrough.html">Walkthrough</a>
+<a href="../../../lectures/06_code_quality/walkthrough.html">Walkthrough</a>
 ```
 ````
 
@@ -43,12 +43,4 @@ Let's demo this using the `sequence` package
 - Use Ruff to format and lint your code. Before submitting, run `ruff format --check`
   and `ruff check` from the repository root.
 - (*) Use `ty` to type-check your package.
-
-## Coding agents
-
-- AI coding agents have transformed software devlopment
-- Company / Chatbot / Coding agent:
-  - Anthropic / Claude / Claude Code
-  - OpenAi / ChatGPT / Codex
-  - Google / Gemini / Antigravity
-- quick demo + discussion
+- Implement a set of local checks to run before raising or updating every pull request.

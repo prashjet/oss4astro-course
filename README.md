@@ -19,7 +19,7 @@ students in astronomy to develop open source software packages for research.
 | 09/11 | Environment and dependency management | [link](https://prashjet.github.io/oss4astro-course/present/lectures/03_environment_and_dependencies/slides.html) | [link](https://prashjet.github.io/oss4astro-course/lectures/03_environment_and_dependencies/walkthrough.html) |
 | 16/11 | Documentation | [link](https://prashjet.github.io/oss4astro-course/present/lectures/04_documentation/slides.html) | [link](https://prashjet.github.io/oss4astro-course/lectures/04_documentation/walkthrough.html) |
 | 23/11 | Testing | [link](https://prashjet.github.io/oss4astro-course/present/lectures/05_testing/slides.html) | [link](https://prashjet.github.io/oss4astro-course/lectures/05_testing/walkthrough.html) |
-| 30/11 | Code quality: linting, formatting, and type hints | ... | ... |
+| 30/11 | Code quality: linting, formatting, and type hints | [link](https://prashjet.github.io/oss4astro-course/present/lectures/06_code_quality/slides.html) | [link](https://prashjet.github.io/oss4astro-course/lectures/06_code_quality/walkthrough.html) |
 | 07/12 | Continuous integration | ... | ... |
 | 14/12 | Packaging: project structure and namespacing | ... | ... |
 | 04/01 | Publishing and citing a release | ... | ... |

@@ -88,3 +88,12 @@ your documentation, without needing you to explain missing steps.
 - (*) Include executable examples in your docstrings and test them using
   `pytest --doctest-modules`.
 - (*) Use **Hypothesis** (or an equivalent tool) for property-based testing.
+
+## Code quality: type hints, formatting, linting
+
+- Add type hints to function and method signatures throughout your codebase. Annotate
+  parameters and return values.
+- Use Ruff to format and lint your code. Before submitting, run `ruff format --check`
+  and `ruff check` from the repository root.
+- (*) Use `ty` to type-check your package.
+- Implement a set of local checks to run before raising or updating every pull request.
