@@ -33,7 +33,8 @@ def test_first_six_terms():
     assert fibonacci(6) == [0, 1, 1, 2, 3, 5]
 ```
 
-The expected result comes from the sequence definition, not from running the implementation once.
+The expected result comes from the sequence definition, not from running the
+implementation once.
 
 ## Which cases should we check?
 
@@ -55,7 +56,8 @@ These tools help us ask different questions about the same code.
 
 ## Live demo
 
-We will add a Fibonacci sequence to our `sequence` package, test it, and examine our tests.
+We will add a Fibonacci sequence to our `sequence` package, test it, and examine our
+tests.
 
 ````{only} revealjs
 ```{raw} html
@@ -71,7 +73,8 @@ We will add a Fibonacci sequence to our `sequence` package, test it, and examine
 
 Coverage measures which lines of code were executed during our tests.
 
-It doesn't tell us whether the assertions were meaningful, whether we've tested all relevant inputs, or whether the results are correct.
+It doesn't tell us whether the assertions were meaningful, whether we've tested all
+relevant inputs, or whether the results are correct.
 
 A test can execute every line of code without detecting an incorrect result.
 
@@ -129,14 +132,16 @@ Design a set of tests for this function, using only its docstring as a specifica
 - Would checking that the output sums to one be sufficient?
 - What would happen if the function always returned a uniform distribution?
 - How would you choose an appropriate numerical tolerance?
-  - `np.isclose`, `np.allclose`, `np.testing.assert_allclose` — using relative (`rtol`) and absolute (`atol`) tolerances
+  - `np.isclose`, `np.allclose`, `np.testing.assert_allclose` — using relative (`rtol`)
+    and absolute (`atol`) tolerances
 - Which tests check particular examples, and which check general properties?
 
 **Is the specification itself sufficiently precise?**
 
 ## Property-based testing
 
-Instead of choosing every test input ourselves, we can test **general properties** across many automatically generated inputs.
+Instead of choosing every test input ourselves, we can test **general properties**
+across many automatically generated inputs.
 
 [Hypothesis](https://hypothesis.readthedocs.io/) is a Python library that:
 
@@ -152,7 +157,8 @@ Instead of choosing every test input ourselves, we can test **general properties
 - **Examples, boundaries, errors and properties complement each other.**
 - **Property-based testing** helps explore inputs we might not think to test manually.
 
-Good tests give us confidence to change our code without inadvertently changing its behaviour.
+Good tests give us confidence to change our code without inadvertently changing its
+behaviour.
 
 ## Further reading
 
@@ -163,8 +169,13 @@ Good tests give us confidence to change our code without inadvertently changing 
 
 ## Project Requirements
 
-- Write automated tests for your Python code using **pytest** (or an equivalent testing framework).
-- Achieve **at least 75% line coverage** across your package, measured using `pytest-cov` (or an equivalent coverage tool).
-- In your **final presentation**, present one representative test from your test suite. Explain what behaviour it checks, why you chose it, and what kind of bug it would catch.
-- (*) Include executable examples in your docstrings and test them using `pytest --doctest-modules`.
+- Write automated tests for your Python code using **pytest** (or an equivalent testing
+  framework).
+- Achieve **at least 75% line coverage** across your package, measured using
+  `pytest-cov` (or an equivalent coverage tool).
+- In your **final presentation**, present one representative test from your test suite.
+  Explain what behaviour it checks, why you chose it, and what kind of bug it would
+  catch.
+- (*) Include executable examples in your docstrings and test them using
+  `pytest --doctest-modules`.
 - (*) Use **Hypothesis** (or an equivalent tool) for property-based testing.

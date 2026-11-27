@@ -4,13 +4,12 @@ orphan: true
 
 # Environment and dependency management with uv
 
-Prashin Jethwa
-09/11/26
+Prashin Jethwa 09/11/26
 
 ## Reproducible scientific computing
 
-You've written a Python analysis. Another researcher wants to run it on their
-computer — perhaps years later.
+You've written a Python analysis. Another researcher wants to run it on their computer —
+perhaps years later.
 
 **What do they need besides your code?**
 
@@ -29,12 +28,12 @@ An **environment** is a Python interpreter and its installed packages.
 
 ## What does a package manager do?
 
-A **package manager** is a tool for installing and managing software packages,
-e.g. `pip` for Python.
+A **package manager** is a tool for installing and managing software packages, e.g.
+`pip` for Python.
 
 They handle the following tasks:
-- **Dependency identification:** read declared requirements and package metadata
-  to identify direct and transitive dependencies — not inspect your source code
+- **Dependency identification:** read declared requirements and package metadata to
+  identify direct and transitive dependencies — not inspect your source code
 - **Dependency resolution:** find mutually compatible versions
 - **Downloading and caching:** fetch packages and store them for reuse
 - **Installation:** install the resolved packages into an environment
@@ -73,24 +72,27 @@ B    ── requires C < 2
 :align: center
 ```
 
-Lockfile generation is a resolution proxy, not a resolver-only measurement.
-Warm-cache installs recreate the environment between runs. Seconds; lower is better.
+Lockfile generation is a resolution proxy, not a resolver-only measurement. Warm-cache
+installs recreate the environment between runs. Seconds; lower is better.
 [OpenTeams, April 2026](https://openteams.com/engineering-blog/benchmark-python-package-managers/):
-~25 direct dependencies; median of two runs on Rocky Linux, x86_64.
-Results depend on workload and hardware; package builds differ across ecosystems.
+~25 direct dependencies; median of two runs on Rocky Linux, x86_64. Results depend on
+workload and hardware; package builds differ across ecosystems.
 
-Also explore the [Python Package Manager Shootout](https://lincolnloop.github.io/python-package-manager-shootout/).
+Also explore the
+[Python Package Manager Shootout](https://lincolnloop.github.io/python-package-manager-shootout/).
 
 ## From package management to project management
 
-A package manager helps you install and use software. But what happens when you're developing your own project?
+A package manager helps you install and use software. But what happens when you're
+developing your own project?
 
 - Declare your project's dependencies.
 - Isolate your project from other projects.
 - Execute your code in the correct environment.
 - Reproduce that environment on another computer.
 
-`uv` goes beyond package management: it provides a unified interface for managing and running an entire Python project.
+`uv` goes beyond package management: it provides a unified interface for managing and
+running an entire Python project.
 
 ## Scope of Python management tools
 
@@ -104,33 +106,39 @@ A package manager helps you install and use software. But what happens when you'
 
 *✓ = supported · ◐ = partial support · — = not supported*
 
-**Project management:** Declaring and locking dependencies, maintaining project configuration, and running commands in the project environment.
+**Project management:** Declaring and locking dependencies, maintaining project
+configuration, and running commands in the project environment.
 
-*[Conda environments](https://docs.conda.io/projects/conda/en/stable/user-guide/tasks/manage-environments.html) · [Poetry](https://python-poetry.org/docs/)*
+*[Conda environments](https://docs.conda.io/projects/conda/en/stable/user-guide/tasks/manage-environments.html)
+· [Poetry](https://python-poetry.org/docs/)*
 
 ## Live Demo
 
-Instructions to reproduce can be found [here](https://prashjet.github.io/oss4astro-course/lectures/03_environment_and_dependencies/walkthrough.html).
+Instructions to reproduce can be found
+[here](https://prashjet.github.io/oss4astro-course/lectures/03_environment_and_dependencies/walkthrough.html).
 
 ## Does developing with `uv` mean everyone must use `uv`?
 
-**No.** In the second part of the demo, we started a **new installable library** from the original Git commit.
+**No.** In the second part of the demo, we started a **new installable library** from
+the original Git commit.
 
 - `uv init --lib` generated an importable `src/sequence/` package.
-- The generated `[build-system]` selects `uv_build` as a standard build backend; no Hatchling substitution is needed.
-- From a clone, users can run `pip install .` in their own environment,
-  independently of uv; runtime dependencies are installed too.
-- `pip` resolves requirements independently; it does not use `uv.lock` or install
-  the development group by default.
+- The generated `[build-system]` selects `uv_build` as a standard build backend; no
+  Hatchling substitution is needed.
+- From a clone, users can run `pip install .` in their own environment, independently of
+  uv; runtime dependencies are installed too.
+- `pip` resolves requirements independently; it does not use `uv.lock` or install the
+  development group by default.
 - Installing from source and publishing to PyPI are separate steps.
 
-**For a new final project, start with `uv init --lib my-project`.**
-We started again from the original commit on a fresh branch.
+**For a new final project, start with `uv init --lib my-project`.** We started again
+from the original commit on a fresh branch.
 
 ## Runtime and development dependencies
 
 - **Runtime dependencies** are needed by the program itself (e.g. NumPy).
-- **Development dependencies** support work on the project (e.g. Sphinx for documentation).
+- **Development dependencies** support work on the project (e.g. Sphinx for
+  documentation).
 - `uv add --dev sphinx` records Sphinx in the `dev` dependency group.
 - `uv run` and `uv sync` include the `dev` group by default; `--no-dev` excludes it.
 
@@ -147,8 +155,10 @@ We started again from the original commit on a fresh branch.
 | Python compatibility requirements | Python/platform-specific alternatives |
 | Human-maintained | Automatically generated |
 
-- `uv.lock` is a **universal lockfile**: it can resolve for multiple Python versions and operating systems.
-- The same package can appear at different versions, with conditions specifying where each applies.
+- `uv.lock` is a **universal lockfile**: it can resolve for multiple Python versions and
+  operating systems.
+- The same package can appear at different versions, with conditions specifying where
+  each applies.
 - A single version may also have multiple platform-specific wheels.
 - `uv sync` installs the appropriate locked distributions for the current environment.
 - Commit `uv.lock` to Git for reproducible development.
@@ -165,14 +175,17 @@ A common convention is **Semantic Versioning (SemVer)**:
 - **MINOR** (`2.4 → 2.5`): backward-compatible new functionality.
 - **PATCH** (`2.4.1 → 2.4.2`): backward-compatible bug fixes.
 
-For **stable releases (1.0.0 onward)**, later versions within the same major series should preserve compatibility under SemVer. Before 1.0.0, the public API may change freely.
+For **stable releases (1.0.0 onward)**, later versions within the same major series
+should preserve compatibility under SemVer. Before 1.0.0, the public API may change
+freely.
 
 But:
 - Not all Python packages follow SemVer.
 - Version numbers are conventions and promises, not guarantees of compatibility.
 - Dependency resolvers do not automatically enforce SemVer rules.
 
-**SemVer communicates compatibility expectations; it does not define dependency constraints.**
+**SemVer communicates compatibility expectations; it does not define dependency
+constraints.**
 
 ## PEP 440: specifying compatible versions
 
@@ -190,9 +203,11 @@ Python uses **PEP 440** to define version ordering and dependency version specif
 - Package authors explicitly declare the version ranges they support.
 - Resolvers combine constraints from direct and transitive dependencies.
 
-Example: A requires `numpy>=2.0`, B requires `numpy<2.2`; a compatible solution lies in `>=2.0,<2.2`.
+Example: A requires `numpy>=2.0`, B requires `numpy<2.2`; a compatible solution lies in
+`>=2.0,<2.2`.
 
-**SemVer helps authors decide which versions are compatible. PEP 440 tells the resolver which versions are allowed.**
+**SemVer helps authors decide which versions are compatible. PEP 440 tells the resolver
+which versions are allowed.**
 
 ## From package management to reproducible projects
 
@@ -204,9 +219,11 @@ Example: A requires `numpy>=2.0`, B requires `numpy<2.2`; a compatible solution 
 | **Reproduce** | `uv.lock` and `uv sync` — recreate resolved dependencies |
 | **Package / Distribute** | `src/` and `[build-system]` — create an installable package |
 
-**The environment is disposable; the project specification and lockfile are what we preserve and share.**
+**The environment is disposable; the project specification and lockfile are what we
+preserve and share.**
 
-`uv` integrates development and package installation; standard build metadata keeps the package usable with other installers.
+`uv` integrates development and package installation; standard build metadata keeps the
+package usable with other installers.
 
 ## New project requirements: environments & dependencies
 
@@ -220,4 +237,6 @@ Your project should now:
 
 Recommended: `uv init --lib` for new projects; equivalent workflows are welcome.
 
-See [Project Requirements](https://github.com/prashjet/oss4astro-course/blob/main/project_requirement.md) for the full list.
+See
+[Project Requirements](https://github.com/prashjet/oss4astro-course/blob/main/project_requirement.md)
+for the full list.

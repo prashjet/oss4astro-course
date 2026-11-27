@@ -4,8 +4,7 @@ orphan: true
 
 # Introduction to Git & GitHub
 
-Prashin Jethwa
-19/10/26
+Prashin Jethwa 19/10/26
 
 ## Goals
 
@@ -16,7 +15,8 @@ After this lecture you should be able to:
 
 ## What is Version Control?
 
-- the practice of controlling, organizing, and tracking different versions in history of source code
+- the practice of controlling, organizing, and tracking different versions in history of
+  source code
 - this is useful for:
   - adding features in a systematic way,
   - reverting to older (working) versions of a codebase,
@@ -34,7 +34,8 @@ After this lecture you should be able to:
 
 - Git is software for version control
   - it is open-source, originally developed by Linus Torvalds (creator of Linux)
-  - it is a *distributed* version control system, i.e. the complete codebase (and full history) is mirrored on every developer's computer
+  - it is a *distributed* version control system, i.e. the complete codebase (and full
+    history) is mirrored on every developer's computer
 - [GitHub](https://github.com/) is a software development platform
   - proprietary, owned by Microsoft
   - uses Git for distributed version control
@@ -101,33 +102,39 @@ After this lecture you should be able to:
 ![GitHub repository banner, with Issues, Pull requests and Fork highlighted](figs/GitHub_banner_annotated.png)
 
 - *pull requests* (PRs) are a way to organise merges within GitHub
-- you *raise* a PR to request that your branch gets merged to main 
-- when working in teams, there will often be discussion and iteration before a PR is merged
+- you *raise* a PR to request that your branch gets merged to main
+- when working in teams, there will often be discussion and iteration before a PR is
+  merged
 
-- GitHub *issues* is where to record changes that need implementing 
+- GitHub *issues* is where to record changes that need implementing
   - user-contributed bugs,
   - your own record of upcoming features,
 
 - to contribute to someone else's repo, first create a *fork*
   - this is your copy of the repo where you can make changes
-  - to get your changes into the *upstream* repository, you must raise a PR 
+  - to get your changes into the *upstream* repository, you must raise a PR
 
 ## Live Demo
 
-Instructions to reproduce can be found [here](https://prashjet.github.io/oss4astro-course/lectures/02_intro_to_git/walkthrough.html).
+Instructions to reproduce can be found
+[here](https://prashjet.github.io/oss4astro-course/lectures/02_intro_to_git/walkthrough.html).
 
 ## Project Requirements
 
 - develop your project using Git & GitHub
 - use branches and PRs when adding new features
   - do not merge directly to main!
-  - keep individual PRs *well-scoped* i.e. as small as possible to implement a single new feature, fix a single bug etc...
+  - keep individual PRs *well-scoped* i.e. as small as possible to implement a single
+    new feature, fix a single bug etc...
 - collaborate at least once via GitHub issues & PRs:
   - pick a partner in this class,
-  - raise an issue in your repository describing some change you would like to make (keep it simple!)
+  - raise an issue in your repository describing some change you would like to make
+    (keep it simple!)
   - invite a colleague from this class to address the issue,
   - to do this: fork your partner's repo, make the change, raise a PR
 
 ## Activity
 
-Follow the instructions on [first-contributions](https://github.com/firstcontributions/first-contributions) to make your first contribution to an open source project.
+Follow the instructions on
+[first-contributions](https://github.com/firstcontributions/first-contributions) to make
+your first contribution to an open source project.
